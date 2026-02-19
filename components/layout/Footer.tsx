@@ -3,7 +3,7 @@ import { Star, Instagram, Twitter, Facebook } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-white/5 pt-16 pb-8">
+    <footer className="bg-background border-t border-border pt-16 pb-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-4">
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Cosmicly. All rights reserved.
           </p>

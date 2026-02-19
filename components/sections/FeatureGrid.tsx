@@ -8,31 +8,33 @@ const features = [
   {
     icon: MessageCircle,
     title: "1-on-1 Guidance",
-    desc: "Chat with professional astrologers anytime, anywhere. Get answers to your specific life questions."
+    desc: "Chat with professional astrologers anytime, anywhere. Get answers to your specific life questions.",
   },
   {
     icon: Star,
     title: "Hyper-Personalized",
-    desc: "Daily horoscopes tailored exactly to your birth chart and current planetary transits."
+    desc: "Daily horoscopes tailored exactly to your birth chart and current planetary transits.",
   },
   {
     icon: Heart,
     title: "Compatibility",
-    desc: "Discover how your stars align with friends, family, and potential partners."
+    desc: "Discover how your stars align with friends, family, and potential partners.",
   },
   {
     icon: Map,
     title: "Natal Chart",
-    desc: "Deep dive into your personality with a comprehensive analysis of your birth chart."
-  }
+    desc: "Deep dive into your personality with a comprehensive analysis of your birth chart.",
+  },
 ];
 
 export function FeatureGrid() {
   return (
-    <section className="py-24 bg-black/20">
+    <section className="py-24 bg-muted/50">
       <div className="container px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Explore the Cosmos</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+            Explore the Cosmos
+          </h2>
           <p className="text-muted-foreground text-lg">
             Everything you need to navigate your spiritual journey.
           </p>
@@ -47,11 +49,13 @@ export function FeatureGrid() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <Card className="p-8 h-full bg-white/5 border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all duration-300 group">
+              <Card className="p-8 h-full bg-card border-border hover:border-primary/50 hover:bg-accent transition-all duration-300 group">
                 <div className="size-12 rounded-xl bg-primary/20 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
                   <feature.icon className="size-6" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
+                <h3 className="text-2xl font-bold mb-3 text-foreground">
+                  {feature.title}
+                </h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {feature.desc}
                 </p>

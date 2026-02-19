@@ -17,7 +17,7 @@ export function FeaturesLines() {
     <section className="py-24 relative overflow-hidden">
       <div className="container px-6 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
             How Cosmicly Works
           </h2>
           <p className="text-muted-foreground text-lg">
@@ -27,7 +27,7 @@ export function FeaturesLines() {
 
         <div className="relative">
           {/* Vertical Line Container */}
-          <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
+          <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
 
           <div className="space-y-16">
             {steps.map((step, i) => (
@@ -49,8 +49,8 @@ export function FeaturesLines() {
                       <p className="text-muted-foreground">{step.desc}</p>
                     </div>
                   ) : (
-                    <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                      <div className="h-32 bg-white/5 rounded-lg w-full flex items-center justify-center text-muted-foreground/30">
+                    <div className="p-6 rounded-2xl bg-muted/50 border border-border backdrop-blur-sm">
+                      <div className="h-32 bg-muted rounded-lg w-full flex items-center justify-center text-muted-foreground/30">
                         Visual Placeholder
                       </div>
                     </div>
@@ -60,7 +60,7 @@ export function FeaturesLines() {
                 {/* Center Dot */}
                 <div className="relative shrink-0 z-10">
                   <div className="size-10 rounded-full bg-background border-4 border-primary shadow-[0_0_15px_var(--primary)] flex items-center justify-center">
-                    <div className="size-3 bg-white rounded-full" />
+                    <div className="size-3 bg-primary rounded-full" />
                   </div>
                 </div>
 
@@ -72,8 +72,8 @@ export function FeaturesLines() {
                       {step.title}
                     </h3>
                     <p className="text-muted-foreground mb-4">{step.desc}</p>
-                    <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                      <div className="h-24 bg-white/5 rounded w-full" />
+                    <div className="p-4 rounded-xl bg-muted/50 border border-border">
+                      <div className="h-24 bg-muted rounded w-full" />
                     </div>
                   </div>
 
@@ -87,8 +87,8 @@ export function FeaturesLines() {
                         <p className="text-muted-foreground">{step.desc}</p>
                       </div>
                     ) : (
-                      <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                        <div className="h-32 bg-white/5 rounded-lg w-full flex items-center justify-center text-muted-foreground/30">
+                      <div className="p-6 rounded-2xl bg-muted/50 border border-border backdrop-blur-sm">
+                        <div className="h-32 bg-muted rounded-lg w-full flex items-center justify-center text-muted-foreground/30">
                           Visual Placeholder
                         </div>
                       </div>

@@ -20,7 +20,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-background/50 backdrop-blur-md border-b border-white/5">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="flex items-center gap-2">
           <div className="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
             <Star className="size-5 fill-current" />
