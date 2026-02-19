@@ -75,7 +75,7 @@ export const COURSES = [
     duration: "2h 45m",
     rating: 4.9,
     image:
-      "https://images.unsplash.com/photo-1515378717309-4ffdd675871f?w=800&q=80",
+      "https://images.unsplash.com/photo-1568444438385-eee33664c233?auto=format&fit=crop&q=80&w=800",
   },
   {
     title: "Tarot for Beginners",
@@ -84,7 +84,7 @@ export const COURSES = [
     duration: "3h 20m",
     rating: 4.8,
     image:
-      "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80",
+      "https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=800",
   },
   {
     title: "Natal Chart Mastery",
@@ -93,7 +93,7 @@ export const COURSES = [
     duration: "4h 10m",
     rating: 5.0,
     image:
-      "https://images.unsplash.com/photo-1532983330958-4b32bb9bb07f?w=800&q=80",
+      "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&q=80&w=800",
   },
 ];
 
@@ -101,22 +101,82 @@ export const INSIGHTS = [
   {
     title: "Soulmate Sketch Reading",
     description:
-      "Discover the physical traits and personality of your future soulmate.",
-    cta: "Reveal Now",
+      "See your soulmate through a personalized sketch and explore romantic potential.",
+    cta: "Access Soulmate Sketch Reading",
     icon: "Heart" as const,
+    category: "Sketches",
   },
   {
-    title: "Future Baby Sketch",
+    title: "Future Baby Sketch Reading",
     description:
-      "A glimpse into your future family and the traits of your future children.",
-    cta: "Get Sketch",
+      "Discover a heartfelt preview of your future child through a hand-drawn sketch.",
+    cta: "Uncover Your Future Baby Sketch",
     icon: "Baby" as const,
+    category: "Sketches",
   },
   {
     title: "Natal Chart Report",
     description:
-      "A deep dive into your personality, strengths, and life path through your birth stars.",
-    cta: "View Report",
+      "Discover your unique strengths, challenges, and life path through your birth chart.",
+    cta: "Access Natal Chart Report",
     icon: "Star" as const,
+    category: "Reports",
+  },
+  {
+    title: "Your Astrocartography Report",
+    description:
+      "Reveal cities where your planetary energy is strongest. Discover where you belong.",
+    cta: "Access Astrocartography Report",
+    icon: "Globe" as const,
+    category: "Reports",
+  },
+  {
+    title: "Palmistry Reading Report",
+    description:
+      "Decode the lines in your hands to uncover personality, future, and key life events.",
+    cta: "Access Palmistry Report",
+    icon: "Hand" as const,
+    category: "Reports",
+  },
+  {
+    title: "Numerology",
+    description:
+      "Reveal the power of numbers in your life. Discover your life path, destiny, and soul numbers.",
+    cta: "Access Numerology",
+    icon: "Hash" as const,
+    category: "Reports",
+  },
+  {
+    title: "Compatibility Reading",
+    description:
+      "Discover how compatible you are with someone special and explore your relationship dynamics.",
+    cta: "Access Compatibility Reading",
+    icon: "Users" as const,
+    category: "Reports",
+  },
+  {
+    title: "Complete Astrology Guide",
+    description:
+      "Understand your Sun, Moon, and Rising signs, learn to read birth charts, and explore planets.",
+    cta: "Access Astrology Guide",
+    icon: "Book" as const,
+    category: "Guides",
+  },
+  {
+    title: "2026 Astrological Forecast",
+    description:
+      "Get a personalized forecast for the year ahead. Discover key astrological events and growth.",
+    cta: "Access Your Forecast",
+    icon: "Sparkles" as const,
+    category: "Guides",
+  },
+  {
+    title: "Tarot Reading Report",
+    description:
+      "Gain clarity on love, career, and growth. Let the Tarot cards guide you toward better choices.",
+    cta: "Unlock Tarot Reading Report",
+    icon: "Layout" as const,
+    category: "Reports",
+    price: "S$1.99",
   },
 ];

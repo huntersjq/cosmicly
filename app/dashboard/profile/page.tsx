@@ -50,13 +50,21 @@ export default function ProfilePage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 h-14 rounded-2xl transition-all font-bold ${
+                className={`flex items-center gap-4 px-5 h-16 rounded-2xl transition-all font-black text-lg ${
                   pathname === item.href
-                    ? "bg-primary/5 text-primary shadow-sm shadow-primary/5"
-                    : "text-zinc-400 hover:text-zinc-900 hover:bg-zinc-50"
+                    ? "bg-primary text-white shadow-xl shadow-primary/20"
+                    : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-50"
                 }`}
               >
-                <item.icon className="w-6 h-6" />
+                <div
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+                    pathname === item.href ? "bg-white/20" : "bg-zinc-50"
+                  }`}
+                >
+                  <item.icon
+                    className={`w-6 h-6 ${pathname === item.href ? "text-white" : "text-zinc-400"}`}
+                  />
+                </div>
                 {item.label}
               </Link>
             ))}

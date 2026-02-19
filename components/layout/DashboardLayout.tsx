@@ -78,60 +78,76 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-              className="w-72 mt-2 p-2 rounded-2xl border-zinc-100 shadow-xl"
+              className="w-72 mt-2 p-2 rounded-2xl border-2 border-zinc-100 bg-white shadow-2xl animate-in fade-in zoom-in-95 duration-200"
               align="end"
             >
-              <div className="px-4 py-3 mb-1">
-                <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-1">
+              <div className="px-5 py-4 mb-1">
+                <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-1.5">
                   Signed in as
                 </p>
-                <p className="text-sm font-bold text-zinc-900 truncate">
+                <p className="text-base font-black text-zinc-900 truncate tracking-tight">
                   justin@example.com
                 </p>
               </div>
-              <DropdownMenuSeparator className="bg-zinc-50" />
-              <div className="py-1">
+              <DropdownMenuSeparator className="bg-zinc-100 mx-2" />
+              <div className="py-2 px-1">
                 <DropdownMenuItem
-                  className="h-12 rounded-xl cursor-pointer focus:bg-zinc-50"
+                  className="h-14 rounded-xl cursor-pointer focus:bg-zinc-50 group px-3"
                   asChild
                 >
                   <Link
                     href="/dashboard/profile"
-                    className="flex items-center gap-3 px-3"
+                    className="flex items-center gap-3 w-full"
                   >
-                    <UserCircle className="w-5 h-5 text-zinc-500" />
-                    <span className="font-bold text-zinc-700">Profile</span>
+                    <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center group-hover:bg-white transition-colors">
+                      <UserCircle className="w-6 h-6 text-zinc-500 group-hover:text-primary transition-colors" />
+                    </div>
+                    <span className="font-bold text-zinc-700 group-hover:text-zinc-900">
+                      Profile
+                    </span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  className="h-12 rounded-xl cursor-pointer focus:bg-zinc-50"
+                  className="h-14 rounded-xl cursor-pointer focus:bg-zinc-50 group px-3"
                   asChild
                 >
                   <Link
                     href="/dashboard/settings"
-                    className="flex items-center gap-3 px-3"
+                    className="flex items-center gap-3 w-full"
                   >
-                    <Settings className="w-5 h-5 text-zinc-500" />
-                    <span className="font-bold text-zinc-700">Settings</span>
+                    <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center group-hover:bg-white transition-colors">
+                      <Settings className="w-6 h-6 text-zinc-500 group-hover:text-primary transition-colors" />
+                    </div>
+                    <span className="font-bold text-zinc-700 group-hover:text-zinc-900">
+                      Settings
+                    </span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="h-12 rounded-xl cursor-pointer focus:bg-zinc-50">
-                  <div className="flex items-center gap-3 px-1 w-full">
-                    <HelpCircle className="w-5 h-5 text-zinc-500" />
-                    <span className="font-bold text-zinc-700">Help Center</span>
+                <DropdownMenuItem className="h-14 rounded-xl cursor-pointer focus:bg-zinc-50 group px-3">
+                  <div className="flex items-center gap-3 w-full">
+                    <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center group-hover:bg-white transition-colors">
+                      <HelpCircle className="w-6 h-6 text-zinc-500 group-hover:text-primary transition-colors" />
+                    </div>
+                    <span className="font-bold text-zinc-700 group-hover:text-zinc-900">
+                      Help Center
+                    </span>
                   </div>
                 </DropdownMenuItem>
               </div>
-              <DropdownMenuSeparator className="bg-zinc-50" />
-              <DropdownMenuItem
-                onClick={handleLogout}
-                className="h-12 rounded-xl cursor-pointer focus:bg-red-50 group"
-              >
-                <div className="flex items-center gap-3 px-1 w-full text-red-500">
-                  <LogOut className="w-5 h-5 text-red-400 group-hover:text-red-500" />
-                  <span className="font-bold">Log Out</span>
-                </div>
-              </DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-zinc-100 mx-2" />
+              <div className="p-1">
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="h-14 rounded-xl cursor-pointer focus:bg-red-50 group px-3"
+                >
+                  <div className="flex items-center gap-3 w-full text-red-500">
+                    <div className="w-10 h-10 rounded-xl bg-red-50/50 flex items-center justify-center group-hover:bg-red-50 transition-colors">
+                      <LogOut className="w-6 h-6 text-red-400 group-hover:text-red-500 transition-colors" />
+                    </div>
+                    <span className="font-bold">Log Out</span>
+                  </div>
+                </DropdownMenuItem>
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
