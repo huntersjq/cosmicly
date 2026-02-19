@@ -47,29 +47,31 @@ export function InsightCard({
   const Icon = iconConfig.icon;
 
   return (
-    <div className="bg-white p-8 rounded-[36px] shadow-sm border border-zinc-100 flex flex-col gap-6 group hover:translate-y-[-4px] transition-all duration-300 h-full">
+    <div className="bg-card p-8 rounded-[36px] shadow-sm border border-border flex flex-col gap-6 group hover:translate-y-[-4px] transition-all duration-300 h-full">
       <div className="flex items-start gap-4">
         <div
-          className={`w-14 h-14 rounded-2xl ${iconConfig.bg} flex items-center justify-center ${iconConfig.color} flex-shrink-0 group-hover:scale-110 transition-transform`}
+          className={`w-14 h-14 rounded-2xl ${iconConfig.bg} dark:bg-zinc-800/50 flex items-center justify-center ${iconConfig.color} flex-shrink-0 group-hover:scale-110 transition-transform`}
         >
           <Icon className="w-8 h-8" />
         </div>
         <div className="space-y-1">
-          <h3 className="text-2xl font-black text-zinc-900 leading-tight">
+          <h3 className="text-2xl font-black text-foreground leading-tight">
             {title}
           </h3>
           {price && (
-            <p className="text-zinc-500 font-bold text-sm">Price: {price}</p>
+            <p className="text-muted-foreground font-bold text-sm">
+              Price: {price}
+            </p>
           )}
         </div>
       </div>
 
-      <p className="text-zinc-500 leading-relaxed text-lg font-medium">
+      <p className="text-muted-foreground leading-relaxed text-lg font-medium">
         {description}
       </p>
 
       <div className="mt-auto pt-4">
-        <Button className="w-full min-h-[56px] h-auto py-4 px-6 rounded-[20px] bg-primary text-white font-black text-lg hover:bg-primary/90 transition-all group whitespace-normal text-center leading-tight">
+        <Button className="w-full min-h-[56px] h-auto py-4 px-6 rounded-[20px] bg-primary text-primary-foreground font-black text-lg hover:bg-primary/90 transition-all group whitespace-normal text-center leading-tight">
           {cta}
         </Button>
       </div>

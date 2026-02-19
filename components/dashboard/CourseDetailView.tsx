@@ -23,12 +23,18 @@ interface CourseDetailsProps {
   onBack: () => void;
 }
 
-export function CourseDetailView({ title, instructor, description, sections, onBack }: CourseDetailsProps) {
+export function CourseDetailView({
+  title,
+  instructor,
+  description,
+  sections,
+  onBack,
+}: CourseDetailsProps) {
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <button 
+      <button
         onClick={onBack}
-        className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition-colors font-bold group"
+        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-bold group"
       >
         <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         Back to Courses
@@ -37,27 +43,33 @@ export function CourseDetailView({ title, instructor, description, sections, onB
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8">
         {/* Main Content */}
         <div className="space-y-8">
-          <div className="bg-white p-10 rounded-[32px] shadow-sm border border-zinc-100 space-y-6">
+          <div className="bg-card p-10 rounded-[32px] shadow-sm border border-border space-y-6">
             <div className="space-y-2">
-              <h1 className="text-4xl font-black tracking-tight text-zinc-900 leading-tight">
+              <h1 className="text-4xl font-black tracking-tight text-foreground leading-tight">
                 {title}
               </h1>
-              <p className="text-zinc-500 text-lg font-medium">by {instructor}</p>
+              <p className="text-muted-foreground text-lg font-medium">
+                by {instructor}
+              </p>
             </div>
-            <p className="text-zinc-600 text-xl leading-relaxed">
+            <p className="text-muted-foreground text-xl leading-relaxed">
               {description}
             </p>
-            <Button className="h-16 px-10 rounded-2xl bg-primary text-white font-bold text-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+            <Button className="h-16 px-10 rounded-2xl bg-primary text-primary-foreground font-bold text-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
               Start Learning
             </Button>
           </div>
 
-          <div className="bg-white p-10 rounded-[32px] shadow-sm border border-zinc-100 space-y-6">
-            <h2 className="text-2xl font-bold text-zinc-900">Course Overview</h2>
+          <div className="bg-card p-10 rounded-[32px] shadow-sm border border-border space-y-6">
+            <h2 className="text-2xl font-bold text-foreground">
+              Course Overview
+            </h2>
             <div className="space-y-4">
-              <p className="text-zinc-600 text-lg leading-relaxed">
-                Discover the deep wisdom of this ancient art. This course teaches clear techniques in step-by-step lessons. 
-                You'll learn how to interpret signs, follow structured frameworks, and read key indicators.
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Discover the deep wisdom of this ancient art. This course
+                teaches clear techniques in step-by-step lessons. You'll learn
+                how to interpret signs, follow structured frameworks, and read
+                key indicators.
               </p>
             </div>
           </div>
@@ -65,32 +77,40 @@ export function CourseDetailView({ title, instructor, description, sections, onB
 
         {/* Sidebar - Course Content */}
         <div className="space-y-6">
-          <div className="bg-white p-8 rounded-[32px] shadow-sm border border-zinc-100 space-y-6 sticky top-24">
-            <h2 className="text-2xl font-bold text-zinc-900">Course Content</h2>
+          <div className="bg-card p-8 rounded-[32px] shadow-sm border border-border space-y-6 sticky top-24">
+            <h2 className="text-2xl font-bold text-foreground">
+              Course Content
+            </h2>
             <div className="space-y-6">
               {sections.map((section, idx) => (
                 <div key={idx} className="space-y-3">
-                  <h3 className="text-lg font-bold text-zinc-900 flex items-center justify-between">
+                  <h3 className="text-lg font-bold text-foreground flex items-center justify-between">
                     {section.title}
-                    <span className="text-zinc-400 text-sm font-medium">{section.lessons.length} lessons</span>
+                    <span className="text-muted-foreground text-sm font-medium">
+                      {section.lessons.length} lessons
+                    </span>
                   </h3>
                   <div className="space-y-2">
                     {section.lessons.map((lesson, lIdx) => (
-                      <div 
+                      <div
                         key={lIdx}
-                        className="flex items-center justify-between p-3 rounded-xl hover:bg-zinc-50 transition-colors cursor-pointer group"
+                        className="flex items-center justify-between p-3 rounded-xl hover:bg-muted transition-colors cursor-pointer group"
                       >
                         <div className="flex items-center gap-3">
                           {lesson.isLocked ? (
-                            <Lock className="w-4 h-4 text-zinc-300" />
+                            <Lock className="w-4 h-4 text-muted-foreground/30" />
                           ) : (
                             <PlayCircle className="w-4 h-4 text-primary" />
                           )}
-                          <span className={`text-base font-medium ${lesson.isLocked ? 'text-zinc-400' : 'text-zinc-700'}`}>
+                          <span
+                            className={`text-base font-medium ${lesson.isLocked ? "text-muted-foreground/50" : "text-foreground/80"}`}
+                          >
                             {lesson.title}
                           </span>
                         </div>
-                        <span className="text-xs font-bold text-zinc-400">{lesson.duration}</span>
+                        <span className="text-xs font-bold text-muted-foreground">
+                          {lesson.duration}
+                        </span>
                       </div>
                     ))}
                   </div>

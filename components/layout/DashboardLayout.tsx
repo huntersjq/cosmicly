@@ -26,6 +26,8 @@ const NAV_ITEMS = [
   { label: "Insights", href: "/dashboard/insights" },
 ];
 
+import { ThemeToggle } from "@/components/dashboard/ThemeToggle";
+
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -35,12 +37,12 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f9fb]">
-      <nav className="sticky top-0 z-50 bg-white border-b border-zinc-100 px-6 h-16 flex items-center justify-between">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <nav className="sticky top-0 z-50 bg-card border-b border-border px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-12">
           <Link
             href="/dashboard"
-            className="text-2xl font-black tracking-tighter text-zinc-900"
+            className="text-2xl font-black tracking-tighter text-foreground"
           >
             hint
           </Link>
@@ -52,7 +54,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 className={`text-base font-semibold transition-colors relative h-16 flex items-center ${
                   pathname === item.href
                     ? "text-primary"
-                    : "text-zinc-500 hover:text-zinc-900"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {item.label}
@@ -65,84 +67,85 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 bg-zinc-100 rounded-lg px-3 py-1.5 cursor-pointer hover:bg-zinc-200 transition-all">
-            <Globe className="w-4 h-4 text-zinc-500" />
-            <span className="text-sm font-bold text-zinc-700">US</span>
-            <span className="text-zinc-400">▼</span>
+          <ThemeToggle />
+          <div className="flex items-center gap-2 bg-muted rounded-lg px-3 py-1.5 cursor-pointer hover:bg-accent transition-all">
+            <Globe className="w-4 h-4 text-muted-foreground" />
+            <span className="text-sm font-bold text-foreground">US</span>
+            <span className="text-muted-foreground">▼</span>
           </div>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <div className="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center cursor-pointer hover:bg-zinc-200 transition-all">
-                <User className="w-5 h-5 text-zinc-600" />
+              <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center cursor-pointer hover:bg-accent transition-all border border-border">
+                <User className="w-5 h-5 text-muted-foreground" />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-              className="w-72 mt-2 p-2 rounded-2xl border-2 border-zinc-100 bg-white shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+              className="w-72 mt-2 p-2 rounded-2xl border-2 border-border bg-card shadow-2xl animate-in fade-in zoom-in-95 duration-200"
               align="end"
             >
               <div className="px-5 py-4 mb-1">
-                <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-1.5">
+                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-1.5">
                   Signed in as
                 </p>
-                <p className="text-base font-black text-zinc-900 truncate tracking-tight">
+                <p className="text-base font-black text-foreground truncate tracking-tight">
                   justin@example.com
                 </p>
               </div>
-              <DropdownMenuSeparator className="bg-zinc-100 mx-2" />
+              <DropdownMenuSeparator className="bg-border mx-2" />
               <div className="py-2 px-1">
                 <DropdownMenuItem
-                  className="h-14 rounded-xl cursor-pointer focus:bg-zinc-50 group px-3"
+                  className="h-14 rounded-xl cursor-pointer focus:bg-accent group px-3"
                   asChild
                 >
                   <Link
                     href="/dashboard/profile"
                     className="flex items-center gap-3 w-full"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center group-hover:bg-white transition-colors">
-                      <UserCircle className="w-6 h-6 text-zinc-500 group-hover:text-primary transition-colors" />
+                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center group-hover:bg-card transition-colors">
+                      <UserCircle className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
-                    <span className="font-bold text-zinc-700 group-hover:text-zinc-900">
+                    <span className="font-bold text-muted-foreground group-hover:text-foreground">
                       Profile
                     </span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  className="h-14 rounded-xl cursor-pointer focus:bg-zinc-50 group px-3"
+                  className="h-14 rounded-xl cursor-pointer focus:bg-accent group px-3"
                   asChild
                 >
                   <Link
                     href="/dashboard/settings"
                     className="flex items-center gap-3 w-full"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center group-hover:bg-white transition-colors">
-                      <Settings className="w-6 h-6 text-zinc-500 group-hover:text-primary transition-colors" />
+                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center group-hover:bg-card transition-colors">
+                      <Settings className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
-                    <span className="font-bold text-zinc-700 group-hover:text-zinc-900">
+                    <span className="font-bold text-muted-foreground group-hover:text-foreground">
                       Settings
                     </span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="h-14 rounded-xl cursor-pointer focus:bg-zinc-50 group px-3">
+                <DropdownMenuItem className="h-14 rounded-xl cursor-pointer focus:bg-accent group px-3">
                   <div className="flex items-center gap-3 w-full">
-                    <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center group-hover:bg-white transition-colors">
-                      <HelpCircle className="w-6 h-6 text-zinc-500 group-hover:text-primary transition-colors" />
+                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center group-hover:bg-card transition-colors">
+                      <HelpCircle className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
-                    <span className="font-bold text-zinc-700 group-hover:text-zinc-900">
+                    <span className="font-bold text-muted-foreground group-hover:text-foreground">
                       Help Center
                     </span>
                   </div>
                 </DropdownMenuItem>
               </div>
-              <DropdownMenuSeparator className="bg-zinc-100 mx-2" />
+              <DropdownMenuSeparator className="bg-border mx-2" />
               <div className="p-1">
                 <DropdownMenuItem
                   onClick={handleLogout}
-                  className="h-14 rounded-xl cursor-pointer focus:bg-red-50 group px-3"
+                  className="h-14 rounded-xl cursor-pointer focus:bg-destructive/10 group px-3"
                 >
-                  <div className="flex items-center gap-3 w-full text-red-500">
-                    <div className="w-10 h-10 rounded-xl bg-red-50/50 flex items-center justify-center group-hover:bg-red-50 transition-colors">
-                      <LogOut className="w-6 h-6 text-red-400 group-hover:text-red-500 transition-colors" />
+                  <div className="flex items-center gap-3 w-full text-destructive">
+                    <div className="w-10 h-10 rounded-xl bg-destructive/10 flex items-center justify-center group-hover:bg-destructive/20 transition-colors">
+                      <LogOut className="w-6 h-6 text-destructive group-hover:text-destructive transition-colors" />
                     </div>
                     <span className="font-bold">Log Out</span>
                   </div>

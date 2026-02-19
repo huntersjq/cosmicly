@@ -33,12 +33,12 @@ export function BirthDetailModal({
 }: BirthDetailModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] bg-white rounded-[32px] p-10 border-none shadow-2xl overflow-hidden">
+      <DialogContent className="sm:max-w-[500px] bg-card rounded-[32px] p-10 border-none shadow-2xl overflow-hidden">
         <DialogHeader className="items-center text-center space-y-4">
-          <DialogTitle className="text-3xl font-black tracking-tight text-zinc-900">
+          <DialogTitle className="text-3xl font-black tracking-tight text-foreground">
             {title}
           </DialogTitle>
-          <p className="text-zinc-500 text-lg leading-relaxed">
+          <p className="text-muted-foreground text-lg leading-relaxed">
             We use these details to create your personalized report. Update
             anything that's not correct.
           </p>
@@ -46,14 +46,14 @@ export function BirthDetailModal({
 
         <div className="space-y-6 py-6 font-medium">
           <div className="space-y-2">
-            <Label className="text-xs font-bold text-zinc-400 uppercase tracking-widest pl-1">
+            <Label className="text-xs font-bold text-muted-foreground uppercase tracking-widest pl-1">
               Place of birth *
             </Label>
             <Select defaultValue="china">
-              <SelectTrigger className="h-14 rounded-2xl border-2 border-zinc-100 bg-zinc-50/50 px-5 text-lg font-bold text-zinc-900 focus:ring-primary/20 focus:border-primary transition-all">
+              <SelectTrigger className="h-14 rounded-2xl border-2 border-border bg-muted/50 px-5 text-lg font-bold text-foreground focus:ring-primary/20 focus:border-primary transition-all">
                 <SelectValue placeholder="Select place" />
               </SelectTrigger>
-              <SelectContent className="rounded-2xl border-zinc-100 shadow-xl">
+              <SelectContent className="rounded-2xl border-border shadow-xl">
                 <SelectItem value="china">China</SelectItem>
                 <SelectItem value="usa">United States</SelectItem>
                 <SelectItem value="uk">United Kingdom</SelectItem>
@@ -64,29 +64,29 @@ export function BirthDetailModal({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label className="text-xs font-bold text-zinc-400 uppercase tracking-widest pl-1">
+              <Label className="text-xs font-bold text-muted-foreground uppercase tracking-widest pl-1">
                 Date of birth *
               </Label>
               <Input
                 type="text"
                 defaultValue="01 / 24 / 1984"
-                className="h-14 rounded-2xl border-2 border-zinc-100 bg-zinc-50/50 px-5 text-lg font-bold text-zinc-900 focus-visible:ring-primary/20 focus-visible:border-primary transition-all"
+                className="h-14 rounded-2xl border-2 border-border bg-muted/50 px-5 text-lg font-bold text-foreground focus-visible:ring-primary/20 focus-visible:border-primary transition-all"
               />
             </div>
             <div className="space-y-2">
-              <Label className="text-xs font-bold text-zinc-400 uppercase tracking-widest pl-1">
+              <Label className="text-xs font-bold text-muted-foreground uppercase tracking-widest pl-1">
                 Time of birth *
               </Label>
               <Input
                 type="text"
                 defaultValue="09 : 57 AM"
-                className="h-14 rounded-2xl border-2 border-zinc-100 bg-zinc-50/50 px-5 text-lg font-bold text-zinc-900 focus-visible:ring-primary/20 focus-visible:border-primary transition-all"
+                className="h-14 rounded-2xl border-2 border-border bg-muted/50 px-5 text-lg font-bold text-foreground focus-visible:ring-primary/20 focus-visible:border-primary transition-all"
               />
             </div>
           </div>
 
-          <div className="flex items-center justify-between p-4 bg-zinc-50 rounded-2xl border border-zinc-100">
-            <span className="text-zinc-600 font-bold text-sm">
+          <div className="flex items-center justify-between p-4 bg-muted rounded-2xl border border-border">
+            <span className="text-muted-foreground font-bold text-sm">
               "I don't know my exact time"
             </span>
             <Switch className="data-[state=checked]:bg-primary" />
@@ -95,7 +95,7 @@ export function BirthDetailModal({
 
         <Button
           onClick={onConfirm}
-          className="w-full h-16 rounded-2xl bg-primary text-white font-black text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 active:scale-[0.98]"
+          className="w-full h-16 rounded-2xl bg-primary text-primary-foreground font-black text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 active:scale-[0.98]"
         >
           Confirm Details
         </Button>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { AuthModal } from "@/components/auth/AuthModal";
+import { ThemeToggle } from "@/components/dashboard/ThemeToggle";
 
 export function Navbar() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -24,29 +25,30 @@ export function Navbar() {
           </div>
           <span className="text-xl font-bold tracking-tight">Hint</span>
         </div>
-        
+
         <div className="flex items-center gap-4">
-          <Link 
-            href="#" 
+          <Link
+            href="#"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Features
           </Link>
-          <Link 
-            href="#" 
+          <Link
+            href="#"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Pricing
           </Link>
-          <Button 
-            variant="secondary" 
+          <ThemeToggle />
+          <Button
+            variant="secondary"
             className="text-sm font-semibold rounded-full px-6"
             onClick={() => openAuth("signup")}
           >
             Sign up
           </Button>
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="text-sm font-medium"
             onClick={() => openAuth("login")}
           >
@@ -55,9 +57,9 @@ export function Navbar() {
         </div>
       </nav>
 
-      <AuthModal 
-        isOpen={isAuthModalOpen} 
-        onClose={() => setIsAuthModalOpen(false)} 
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
         initialType={authType}
       />
     </>

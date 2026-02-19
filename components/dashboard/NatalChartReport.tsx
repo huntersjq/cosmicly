@@ -28,14 +28,14 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
       />
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-zinc-400 hover:text-zinc-900 transition-colors font-bold group"
+        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-bold group"
       >
         <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         Back to Insights
       </button>
 
       {/* Hero Section */}
-      <div className="bg-white rounded-[40px] shadow-sm border border-zinc-100 overflow-hidden">
+      <div className="bg-card rounded-[40px] shadow-sm border border-border overflow-hidden">
         <div className="p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
           <div className="relative w-64 h-64 flex-shrink-0">
             {/* Simple SVG Birth Chart Wheel Mockup */}
@@ -48,16 +48,18 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
                 cy="50"
                 r="48"
                 fill="none"
-                stroke="#f4f4f5"
+                stroke="currentColor"
                 strokeWidth="0.5"
+                className="text-border"
               />
               <circle
                 cx="50"
                 cy="50"
                 r="35"
                 fill="none"
-                stroke="#f4f4f5"
+                stroke="currentColor"
                 strokeWidth="0.5"
+                className="text-border"
               />
               {[...Array(12)].map((_, i) => (
                 <line
@@ -66,8 +68,9 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
                   y1="50"
                   x2={50 + 48 * Math.cos((i * 30 * Math.PI) / 180)}
                   y2={50 + 48 * Math.sin((i * 30 * Math.PI) / 180)}
-                  stroke="#f4f4f5"
+                  stroke="currentColor"
                   strokeWidth="0.5"
+                  className="text-border"
                 />
               ))}
               {/* Fake Aspect Lines */}
@@ -104,8 +107,8 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
               <circle cx="50" cy="15" r="2" fill="#f59e0b" />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-12 h-12 bg-white rounded-full shadow-lg border border-zinc-50 flex items-center justify-center">
-                <span className="text-zinc-900 text-[10px] font-black italic">
+              <div className="w-12 h-12 bg-card rounded-full shadow-lg border border-border flex items-center justify-center">
+                <span className="text-foreground text-[10px] font-black italic">
                   HINT
                 </span>
               </div>
@@ -113,20 +116,20 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
           </div>
 
           <div className="space-y-6 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight text-zinc-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground leading-tight">
               Welcome to your cosmic blueprint, Justin
             </h1>
-            <p className="text-zinc-500 text-lg leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Your natal chart is a snapshot of the sky at the exact moment you
               were born, revealing the deeper layers of your personality,
               potential, and life path.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <div className="bg-blue-50 text-blue-700 px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2">
-                <Star className="w-4 h-4 fill-blue-500" />
+              <div className="bg-primary/10 text-primary px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2">
+                <Star className="w-4 h-4 fill-primary" />
                 Personalized Report
               </div>
-              <div className="bg-zinc-100 text-zinc-600 px-4 py-2 rounded-full font-bold text-sm">
+              <div className="bg-muted text-muted-foreground px-4 py-2 rounded-full font-bold text-sm">
                 Full Access
               </div>
             </div>
@@ -134,50 +137,56 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
         </div>
 
         {/* Details Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-zinc-100 divide-y md:divide-y-0 md:divide-x divide-zinc-100">
-          <div className="p-8 space-y-4 bg-zinc-50/30">
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-zinc-400">
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-border divide-y md:divide-y-0 md:divide-x divide-border">
+          <div className="p-8 space-y-4 bg-muted/30">
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">
               Personal Details
             </h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-zinc-400">Name</span>
-                <span className="text-zinc-900">Justin</span>
+                <span className="text-muted-foreground">Name</span>
+                <span className="text-foreground">Justin</span>
               </div>
               <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-zinc-400">Date of Birth</span>
-                <span className="text-zinc-900">1984.24.01</span>
+                <span className="text-muted-foreground">Date of Birth</span>
+                <span className="text-foreground">1984.24.01</span>
               </div>
               <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-zinc-400">Time of Birth</span>
-                <span className="text-zinc-900">09:57 AM</span>
+                <span className="text-muted-foreground">Time of Birth</span>
+                <span className="text-foreground">09:57 AM</span>
               </div>
             </div>
           </div>
           <div className="p-8 space-y-4">
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-zinc-400">
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">
               Astrological Details
             </h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-zinc-400">Rising Sign</span>
-                <span className="text-zinc-900 flex items-center gap-2">
+                <span className="text-muted-foreground">Rising Sign</span>
+                <span className="text-foreground flex items-center gap-2">
                   ♓︎ Pisces{" "}
-                  <span className="text-zinc-300 text-sm">(339°40')</span>
+                  <span className="text-muted-foreground/50 text-sm">
+                    (339°40')
+                  </span>
                 </span>
               </div>
               <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-zinc-400">Sun Sign</span>
-                <span className="text-zinc-900 flex items-center gap-2">
+                <span className="text-muted-foreground">Sun Sign</span>
+                <span className="text-foreground flex items-center gap-2">
                   ♒︎ Aquarius{" "}
-                  <span className="text-zinc-300 text-sm">(303°15')</span>
+                  <span className="text-muted-foreground/50 text-sm">
+                    (303°15')
+                  </span>
                 </span>
               </div>
               <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-zinc-400">Moon Sign</span>
-                <span className="text-zinc-900 flex items-center gap-2">
+                <span className="text-muted-foreground">Moon Sign</span>
+                <span className="text-foreground flex items-center gap-2">
                   ♎︎ Libra{" "}
-                  <span className="text-zinc-300 text-sm">(198°57')</span>
+                  <span className="text-muted-foreground/50 text-sm">
+                    (198°57')
+                  </span>
                 </span>
               </div>
             </div>
@@ -189,18 +198,18 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
       <div className="space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div className="space-y-2">
-            <h2 className="text-3xl font-black text-zinc-900">
+            <h2 className="text-3xl font-black text-foreground">
               Your Sign Report
             </h2>
-            <p className="text-zinc-500 font-medium">
+            <p className="text-muted-foreground font-medium">
               Detailed breakdown of your planetary energies.
             </p>
           </div>
-          <div className="flex items-center gap-2 p-1 bg-zinc-100 rounded-2xl w-fit">
-            <button className="px-6 py-2 bg-white rounded-xl shadow-sm text-sm font-black text-zinc-900">
+          <div className="flex items-center gap-2 p-1 bg-muted rounded-2xl w-fit border border-border">
+            <button className="px-6 py-2 bg-card rounded-xl shadow-sm text-sm font-black text-foreground">
               Sign
             </button>
-            <button className="px-6 py-2 rounded-xl text-sm font-black text-zinc-400">
+            <button className="px-6 py-2 rounded-xl text-sm font-black text-muted-foreground">
               House
             </button>
           </div>
@@ -216,19 +225,19 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
                 label: "SUN SIGN",
                 value: "Your core energy and purpose",
                 icon: "☀️",
-                color: "bg-yellow-400/10 text-yellow-700",
+                color: "bg-yellow-400/10 text-yellow-500",
               },
               {
                 label: "MOON SIGN",
                 value: "Your emotional nature and inner world",
                 icon: "🌙",
-                color: "bg-blue-400/10 text-blue-700",
+                color: "bg-blue-400/10 text-blue-500",
               },
               {
                 label: "RISING SIGN",
                 value: "Your outward personality and first impressions",
                 icon: "🌅",
-                color: "bg-green-400/10 text-green-700",
+                color: "bg-green-400/10 text-green-500",
               },
             ],
           },
@@ -240,29 +249,29 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
                 label: "MERCURY",
                 value: "Your thinking & communication",
                 icon: "☿",
-                color: "bg-purple-400/10 text-purple-700",
+                color: "bg-purple-400/10 text-purple-500",
               },
               {
                 label: "VENUS",
                 value: "Your love & values",
                 icon: "♀",
-                color: "bg-rose-400/10 text-rose-700",
+                color: "bg-rose-400/10 text-rose-500",
               },
               {
                 label: "MARS",
                 value: "Your drive and ambition",
                 icon: "♂",
-                color: "bg-orange-400/10 text-orange-700",
+                color: "bg-orange-400/10 text-orange-500",
               },
             ],
           },
         ].map((section, idx) => (
           <div key={idx} className="space-y-4">
             <div className="space-y-1">
-              <h3 className="text-xl font-black text-zinc-900">
+              <h3 className="text-xl font-black text-foreground">
                 {section.title}
               </h3>
-              <p className="text-zinc-400 font-medium text-sm">
+              <p className="text-muted-foreground font-medium text-sm">
                 {section.subtitle}
               </p>
             </div>
@@ -270,7 +279,7 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
               {section.items.map((item, i) => (
                 <div
                   key={i}
-                  className="p-6 bg-white border border-zinc-100 rounded-3xl hover:border-primary/20 hover:shadow-xl hover:shadow-zinc-200/50 transition-all group cursor-pointer"
+                  className="p-6 bg-card border border-border rounded-3xl hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer"
                 >
                   <div className="flex flex-col gap-4">
                     <div
@@ -279,10 +288,10 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
                       {item.icon}
                     </div>
                     <div className="space-y-1">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
                         {item.label}
                       </h4>
-                      <p className="text-zinc-900 font-bold leading-tight group-hover:text-primary transition-colors">
+                      <p className="text-foreground font-bold leading-tight group-hover:text-primary transition-colors">
                         {item.value}
                       </p>
                     </div>
@@ -294,22 +303,22 @@ export function NatalChartReport({ onBack }: NatalChartReportProps) {
         ))}
 
         {/* Locked Sections */}
-        <div className="relative group overflow-hidden bg-zinc-900 rounded-[40px] p-12 text-center text-white">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent pointer-events-none" />
+        <div className="relative group overflow-hidden bg-muted/50 dark:bg-primary/10 rounded-[40px] p-12 text-center text-foreground border border-border dark:border-primary/20 shadow-lg">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none" />
           <div className="relative z-10 space-y-6">
-            <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Lock className="w-8 h-8 text-white/50" />
+            <div className="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Lock className="w-8 h-8 text-primary" />
             </div>
             <h3 className="text-3xl font-black italic">
               Decode Your Full Cosmic Path
             </h3>
-            <p className="text-zinc-400 text-lg max-w-lg mx-auto">
+            <p className="text-muted-foreground text-lg max-w-lg mx-auto">
               Advanced patterns, life purpose nodes, and future transits are
               available in your premium blueprint.
             </p>
             <Button
               onClick={() => setIsPaymentModalOpen(true)}
-              className="h-16 px-12 rounded-2xl bg-white text-zinc-900 font-black text-xl hover:bg-zinc-100 transition-all shadow-2xl"
+              className="h-16 px-12 rounded-2xl bg-primary text-primary-foreground font-black text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20"
             >
               Unlock Premium Insights
             </Button>

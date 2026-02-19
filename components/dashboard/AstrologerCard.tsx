@@ -11,26 +11,32 @@ interface AstrologerCardProps {
   avatar: string;
 }
 
-export function AstrologerCard({ name, specialties, bio, price, avatar }: AstrologerCardProps) {
+export function AstrologerCard({
+  name,
+  specialties,
+  bio,
+  price,
+  avatar,
+}: AstrologerCardProps) {
   return (
-    <div className="bg-white p-8 rounded-[24px] shadow-sm border border-zinc-100 flex flex-col md:flex-row gap-8">
+    <div className="bg-card p-8 rounded-[24px] shadow-sm border border-border flex flex-col md:flex-row gap-8">
       {/* Avatar & Info */}
       <div className="flex-shrink-0">
-        <img 
-          src={avatar} 
-          alt={name} 
-          className="w-24 h-24 rounded-full object-cover border-4 border-zinc-50"
+        <img
+          src={avatar}
+          alt={name}
+          className="w-24 h-24 rounded-full object-cover border-4 border-muted"
         />
       </div>
 
       <div className="flex-grow space-y-4">
         <div className="flex flex-col gap-3">
-          <h3 className="text-2xl font-bold text-zinc-900">{name}</h3>
+          <h3 className="text-2xl font-bold text-foreground">{name}</h3>
           <div className="flex flex-wrap gap-2">
             {specialties.map((spec) => (
-              <span 
-                key={spec} 
-                className="bg-zinc-100 text-zinc-600 px-3 py-1 rounded-full text-sm font-medium"
+              <span
+                key={spec}
+                className="bg-muted text-muted-foreground px-3 py-1 rounded-full text-sm font-medium"
               >
                 {spec}
               </span>
@@ -38,22 +44,29 @@ export function AstrologerCard({ name, specialties, bio, price, avatar }: Astrol
           </div>
         </div>
 
-        <p className="text-zinc-600 leading-relaxed text-lg max-w-2xl">
+        <p className="text-muted-foreground leading-relaxed text-lg max-w-2xl">
           {bio}
         </p>
 
         <div className="space-y-3">
-          <div className="flex items-center gap-2 text-zinc-500">
+          <div className="flex items-center gap-2 text-muted-foreground">
             <MessageSquare className="w-4 h-4 text-primary" />
-            <span className="text-sm font-semibold">Chat / Unlimited / <span className="text-primary">No extra charge</span></span>
+            <span className="text-sm font-semibold">
+              Chat / Unlimited /{" "}
+              <span className="text-primary">No extra charge</span>
+            </span>
           </div>
-          <div className="flex items-center gap-2 text-zinc-500">
+          <div className="flex items-center gap-2 text-muted-foreground">
             <Phone className="w-4 h-4 text-primary" />
-            <span className="text-sm font-semibold">Live Call / 30 minutes / <span className="text-zinc-900">{price}</span> <span className="line-through">$42.99</span></span>
+            <span className="text-sm font-semibold">
+              Live Call / 30 minutes /{" "}
+              <span className="text-foreground">{price}</span>{" "}
+              <span className="line-through opacity-50">$42.99</span>
+            </span>
           </div>
         </div>
 
-        <Button className="w-full md:w-auto px-12 h-14 rounded-xl bg-primary text-white font-bold text-lg hover:bg-primary/90 transition-all">
+        <Button className="w-full md:w-auto px-12 h-14 rounded-xl bg-primary text-primary-foreground font-bold text-lg hover:bg-primary/90 transition-all">
           Details
         </Button>
       </div>
