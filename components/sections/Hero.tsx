@@ -1,10 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Play } from "lucide-react";
+import { useState } from "react";
+import { AuthModal } from "@/components/auth/AuthModal";
 
 export function Hero() {
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Ambience */}
@@ -41,15 +46,20 @@ export function Hero() {
             <Button
               size="lg"
               className="h-14 px-8 text-lg rounded-full shadow-[0_0_20px_rgba(var(--primary),0.3)] hover:shadow-[0_0_30px_rgba(var(--primary),0.5)] transition-shadow"
+              onClick={() => setIsAuthOpen(true)}
             >
               Begin My Journey
             </Button>
             <Button
+              asChild
               size="lg"
               variant="ghost"
-              className="h-14 px-8 text-lg rounded-full hover:bg-muted"
+              className="h-14 px-8 text-lg rounded-full hover:bg-muted gap-2"
             >
-              View Features
+              <Link href="/dashboard">
+                <Play className="size-4 fill-current" />
+                Try Demo
+              </Link>
             </Button>
           </div>
 
@@ -125,6 +135,12 @@ export function Hero() {
           </motion.div>
         </motion.div>
       </div>
+
+      <AuthModal
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
+        initialType="signup"
+      />
     </section>
   );
 }

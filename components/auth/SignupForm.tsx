@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,6 +13,8 @@ interface SignupFormProps {
 }
 
 export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     confirmEmail: "",
@@ -22,8 +25,11 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Signup with:", formData);
-    // Signup logic would go here
+    setIsLoading(true);
+    // Simulate signup delay, then redirect to dashboard
+    setTimeout(() => {
+      router.push("/dashboard");
+    }, 800);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -139,10 +145,17 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
 
         <Button
           type="submit"
-          disabled={!formData.agreed}
+          disabled={!formData.agreed || isLoading}
           className="w-full h-14 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 transition-all shadow-[0_8px_16px_-4px_rgba(var(--primary-rgb),0.3)] text-white disabled:opacity-50"
         >
-          Sign Up
+          {isLoading ? (
+            <span className="flex items-center gap-2">
+              <span className="size-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              Creating account...
+            </span>
+          ) : (
+            "Sign Up"
+          )}
         </Button>
       </form>
 

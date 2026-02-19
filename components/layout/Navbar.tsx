@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
+import { Star, Play } from "lucide-react";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { ThemeToggle } from "@/components/dashboard/ThemeToggle";
 import { useI18n } from "@/components/i18n-provider";
@@ -43,7 +43,17 @@ export function Navbar() {
           </Link>
           <ThemeToggle />
           <Button
-            variant="secondary"
+            asChild
+            variant="outline"
+            className="text-sm font-semibold rounded-full px-5 gap-2 border-primary/30 text-primary hover:bg-primary/10 hover:text-primary"
+          >
+            <Link href="/dashboard">
+              <Play className="size-3.5 fill-current" />
+              Try Demo
+            </Link>
+          </Button>
+          <Button
+            variant="default"
             className="text-sm font-semibold rounded-full px-6"
             onClick={() => openAuth("signup")}
           >

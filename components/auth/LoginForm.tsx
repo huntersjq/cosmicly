@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,12 +11,17 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
+  const router = useRouter();
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login with:", email);
-    // Passwordless login logic would go here
+    setIsLoading(true);
+    // Simulate login delay, then redirect to dashboard
+    setTimeout(() => {
+      router.push("/dashboard");
+    }, 800);
   };
 
   return (
@@ -41,9 +47,17 @@ export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
           </div>
           <Button
             type="submit"
-            className="w-full h-14 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 transition-all shadow-[0_8px_16px_-4px_rgba(var(--primary-rgb),0.3)] text-white"
+            disabled={isLoading}
+            className="w-full h-14 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 transition-all shadow-[0_8px_16px_-4px_rgba(var(--primary-rgb),0.3)] text-white disabled:opacity-70"
           >
-            Log In
+            {isLoading ? (
+              <span className="flex items-center gap-2">
+                <span className="size-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                Logging in...
+              </span>
+            ) : (
+              "Log In"
+            )}
           </Button>
         </form>
       </div>
