@@ -38,19 +38,24 @@ jobs:
           cache: "npm"
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        with:
-          # Automatically inject basePath in your Next.js config file and disable
-          # server side image optimization (node.js stuff).
-          #
-          # You can set this to true if you're using a custom domain, or it will
-          # automatically detect your project name for the basePath.
-          static_site_generator: next
       - name: Install dependencies
         run: npm ci
       - name: Build with Next.js
         run: npm run build
-      - name: "Debug: List files"
-        run: ls -R out || echo "out directory not found"
+      - name: "Debug: Check build output"
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Listing all directories:"
+          find . -maxdepth 2 -type d
+          if [ -d "out" ]; then
+            echo "out directory exists. Listing contents:"
+            ls -la out
+          else
+            echo "out directory does NOT exist."
+            if [ -d ".next" ]; then
+              echo ".next directory exists. Build might have skipped export."
+            fi
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
