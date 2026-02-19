@@ -35,7 +35,10 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
     <div className="flex flex-col gap-6 py-4">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm font-semibold text-zinc-900 dark:text-zinc-200">
+          <Label
+            htmlFor="email"
+            className="text-sm font-semibold text-zinc-900 dark:text-zinc-200"
+          >
             Email <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -50,7 +53,10 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="confirmEmail" className="text-sm font-semibold text-zinc-900 dark:text-zinc-200">
+          <Label
+            htmlFor="confirmEmail"
+            className="text-sm font-semibold text-zinc-900 dark:text-zinc-200"
+          >
             Confirm Email <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -65,7 +71,10 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="birthDate" className="text-sm font-semibold text-zinc-900 dark:text-zinc-200">
+          <Label
+            htmlFor="birthDate"
+            className="text-sm font-semibold text-zinc-900 dark:text-zinc-200"
+          >
             Birth Date <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -80,7 +89,10 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="name" className="text-sm font-semibold text-zinc-900 dark:text-zinc-200">
+          <Label
+            htmlFor="name"
+            className="text-sm font-semibold text-zinc-900 dark:text-zinc-200"
+          >
             Name <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -95,25 +107,38 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </div>
 
         <div className="flex items-start space-x-2 pt-2">
-          <Checkbox 
-            id="agreed" 
+          <Checkbox
+            id="agreed"
             className="mt-1 border-zinc-300 dark:border-zinc-700 data-[state=checked]:bg-primary data-[state=checked]:text-white"
             checked={formData.agreed}
-            onCheckedChange={(checked) => setFormData(prev => ({ ...prev, agreed: checked === true }))}
+            onCheckedChange={(checked) =>
+              setFormData((prev) => ({ ...prev, agreed: checked === true }))
+            }
           />
-          <Label 
-            htmlFor="agreed" 
+          <Label
+            htmlFor="agreed"
             className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed cursor-pointer font-medium"
           >
-            I have read and agree to Hint's{" "}
-            <Link href="#" className="text-primary hover:underline font-semibold">Terms & Conditions</Link>
-            {" "}and{" "}
-            <Link href="#" className="text-primary hover:underline font-semibold">Privacy Policy</Link>.
+            I have read and agree to Cosmicly's{" "}
+            <Link
+              href="#"
+              className="text-primary hover:underline font-semibold"
+            >
+              Terms & Conditions
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="#"
+              className="text-primary hover:underline font-semibold"
+            >
+              Privacy Policy
+            </Link>
+            .
           </Label>
         </div>
 
-        <Button 
-          type="submit" 
+        <Button
+          type="submit"
           disabled={!formData.agreed}
           className="w-full h-14 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 transition-all shadow-[0_8px_16px_-4px_rgba(var(--primary-rgb),0.3)] text-white disabled:opacity-50"
         >
@@ -124,7 +149,7 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
       <div className="text-center">
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
           Already have an account?{" "}
-          <button 
+          <button
             onClick={onSwitchToLogin}
             className="text-primary hover:underline font-semibold"
           >

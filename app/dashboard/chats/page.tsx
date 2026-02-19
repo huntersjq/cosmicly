@@ -1,34 +1,12 @@
-"use client";
+import { ChatsContent } from "@/components/dashboard/ChatsContent";
+import type { Metadata } from "next";
 
-import { useState } from "react";
-import { DashboardLayout } from "@/components/layout/DashboardLayout";
-import { AstrologerCard } from "@/components/dashboard/AstrologerCard";
-import { AstrologerDetailView } from "@/components/dashboard/AstrologerDetailView";
-import { ASTROLOGERS } from "@/lib/mock-data";
+export const metadata: Metadata = {
+  title: "Professional Astrologers",
+  description:
+    "Connect with expert astrologers for personal guidance and live cosmic insights.",
+};
 
 export default function ChatsPage() {
-  const [selectedAstrologer, setSelectedAstrologer] = useState<typeof ASTROLOGERS[0] | null>(null);
-
-  if (selectedAstrologer) {
-    return (
-      <DashboardLayout>
-        <AstrologerDetailView 
-          {...selectedAstrologer}
-          onBack={() => setSelectedAstrologer(null)}
-        />
-      </DashboardLayout>
-    );
-  }
-
-  return (
-    <DashboardLayout>
-      <div className="max-w-4xl mx-auto space-y-6">
-        {ASTROLOGERS.map((astrologer) => (
-          <div key={astrologer.name} onClick={() => setSelectedAstrologer(astrologer)} className="cursor-pointer">
-            <AstrologerCard {...astrologer} />
-          </div>
-        ))}
-      </div>
-    </DashboardLayout>
-  );
+  return <ChatsContent />;
 }

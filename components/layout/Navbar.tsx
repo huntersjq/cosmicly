@@ -25,7 +25,7 @@ export function Navbar() {
           <div className="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
             <Star className="size-5 fill-current" />
           </div>
-          <span className="text-xl font-bold tracking-tight">Hint</span>
+          <span className="text-xl font-bold tracking-tight">Cosmicly</span>
         </div>
 
         <div className="flex items-center gap-4">

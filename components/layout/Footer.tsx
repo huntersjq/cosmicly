@@ -11,7 +11,7 @@ export function Footer() {
               <div className="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                 <Star className="size-5 fill-current" />
               </div>
-              <span className="text-xl font-bold tracking-tight">Hint</span>
+              <span className="text-xl font-bold tracking-tight">Cosmicly</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Navigate through life with the stars. Your personalized guide to
@@ -95,7 +95,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/5">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Hint Replica. All rights reserved.
+            © {new Date().getFullYear()} Cosmicly. All rights reserved.
           </p>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
             <Link
