@@ -3,324 +3,181 @@
 import { useState } from "react";
 import {
   ChevronLeft,
-  MessageSquare,
-  Star,
-  ArrowRight,
-  Info,
   Lock,
+  Star,
+  Zap,
+  Shield,
+  Navigation,
+  Activity,
+  User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PaymentModal } from "./PaymentModal";
+import { useI18n } from "@/components/i18n-provider";
 
 interface NatalChartReportProps {
   onBack: () => void;
 }
 
 export function NatalChartReport({ onBack }: NatalChartReportProps) {
+  const { t } = useI18n();
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20">
+    <div className="max-w-4xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
       <PaymentModal
         isOpen={isPaymentModalOpen}
         onClose={() => setIsPaymentModalOpen(false)}
-        title="Unlock Full Cosmic Blueprint"
+        title={t("payment.title")}
       />
       <button
         onClick={onBack}
         className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-bold group"
       >
         <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-        Back to Insights
+        {t("common.back")}
       </button>
 
-      {/* Hero Section */}
-      <div className="bg-card rounded-[40px] shadow-sm border border-border overflow-hidden">
-        <div className="p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
-          <div className="relative w-64 h-64 flex-shrink-0">
-            {/* Simple SVG Birth Chart Wheel Mockup */}
-            <svg
-              viewBox="0 0 100 100"
-              className="w-full h-full transform -rotate-90"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="48"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.5"
-                className="text-border"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="35"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.5"
-                className="text-border"
-              />
-              {[...Array(12)].map((_, i) => (
-                <line
-                  key={i}
-                  x1="50"
-                  y1="50"
-                  x2={50 + 48 * Math.cos((i * 30 * Math.PI) / 180)}
-                  y2={50 + 48 * Math.sin((i * 30 * Math.PI) / 180)}
-                  stroke="currentColor"
-                  strokeWidth="0.5"
-                  className="text-border"
-                />
-              ))}
-              {/* Fake Aspect Lines */}
-              <line
-                x1="20"
-                y1="50"
-                x2="80"
-                y2="50"
-                stroke="#f87171"
-                strokeWidth="0.5"
-                opacity="0.5"
-              />
-              <line
-                x1="50"
-                y1="20"
-                x2="50"
-                y2="80"
-                stroke="#60a5fa"
-                strokeWidth="0.5"
-                opacity="0.5"
-              />
-              <line
-                x1="30"
-                y1="30"
-                x2="70"
-                y2="70"
-                stroke="#fbbf24"
-                strokeWidth="0.5"
-                opacity="0.5"
-              />
-              {/* Planetary Icons Mock */}
-              <circle cx="85" cy="50" r="2" fill="#ef4444" />
-              <circle cx="15" cy="50" r="2" fill="#3b82f6" />
-              <circle cx="50" cy="15" r="2" fill="#f59e0b" />
-            </svg>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-12 h-12 bg-card rounded-full shadow-lg border border-border flex items-center justify-center">
-                <span className="text-foreground text-[10px] font-black italic">
-                  HINT
-                </span>
-              </div>
-            </div>
-          </div>
+      <div className="space-y-12">
+        {/* Report Hero */}
+        <div className="bg-card rounded-[40px] p-10 md:p-16 border border-border shadow-xl text-center space-y-8 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -mr-32 -mt-32" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[100px] -ml-32 -mb-32" />
 
-          <div className="space-y-6 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight text-foreground leading-tight">
-              Welcome to your cosmic blueprint, Justin
+          <div className="relative space-y-4">
+            <h1 className="text-5xl font-black text-foreground tracking-tight">
+              {t("natal.title")}
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              Your natal chart is a snapshot of the sky at the exact moment you
-              were born, revealing the deeper layers of your personality,
-              potential, and life path.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <div className="bg-primary/10 text-primary px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2">
-                <Star className="w-4 h-4 fill-primary" />
-                Personalized Report
-              </div>
-              <div className="bg-muted text-muted-foreground px-4 py-2 rounded-full font-bold text-sm">
-                Full Access
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Details Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-border divide-y md:divide-y-0 md:divide-x divide-border">
-          <div className="p-8 space-y-4 bg-muted/30">
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">
-              Personal Details
-            </h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-muted-foreground">Name</span>
-                <span className="text-foreground">Justin</span>
-              </div>
-              <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-muted-foreground">Date of Birth</span>
-                <span className="text-foreground">1984.24.01</span>
-              </div>
-              <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-muted-foreground">Time of Birth</span>
-                <span className="text-foreground">09:57 AM</span>
-              </div>
-            </div>
-          </div>
-          <div className="p-8 space-y-4">
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">
-              Astrological Details
-            </h3>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-muted-foreground">Rising Sign</span>
-                <span className="text-foreground flex items-center gap-2">
-                  ♓︎ Pisces{" "}
-                  <span className="text-muted-foreground/50 text-sm">
-                    (339°40')
-                  </span>
-                </span>
-              </div>
-              <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-muted-foreground">Sun Sign</span>
-                <span className="text-foreground flex items-center gap-2">
-                  ♒︎ Aquarius{" "}
-                  <span className="text-muted-foreground/50 text-sm">
-                    (303°15')
-                  </span>
-                </span>
-              </div>
-              <div className="flex justify-between items-center text-lg font-bold">
-                <span className="text-muted-foreground">Moon Sign</span>
-                <span className="text-foreground flex items-center gap-2">
-                  ♎︎ Libra{" "}
-                  <span className="text-muted-foreground/50 text-sm">
-                    (198°57')
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Sign Report Section */}
-      <div className="space-y-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-black text-foreground">
-              Your Sign Report
-            </h2>
-            <p className="text-muted-foreground font-medium">
-              Detailed breakdown of your planetary energies.
+            <p className="text-muted-foreground text-xl font-medium max-w-2xl mx-auto">
+              {t("natal.subtitle")}
             </p>
           </div>
-          <div className="flex items-center gap-2 p-1 bg-muted rounded-2xl w-fit border border-border">
-            <button className="px-6 py-2 bg-card rounded-xl shadow-sm text-sm font-black text-foreground">
-              Sign
-            </button>
-            <button className="px-6 py-2 rounded-xl text-sm font-black text-muted-foreground">
-              House
-            </button>
+
+          <div className="relative flex flex-wrap gap-4 justify-center">
+            <div className="bg-primary/10 text-primary px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2">
+              <Star className="w-4 h-4 fill-primary" />
+              {t("insights.personalized")}
+            </div>
           </div>
         </div>
 
-        {/* Categorized Reports */}
-        {[
-          {
-            title: "How Your Core Self Expresses",
-            subtitle: "How you shine, feel, and are first seen.",
-            items: [
-              {
-                label: "SUN SIGN",
-                value: "Your core energy and purpose",
-                icon: "☀️",
-                color: "bg-yellow-400/10 text-yellow-500",
-              },
-              {
-                label: "MOON SIGN",
-                value: "Your emotional nature and inner world",
-                icon: "🌙",
-                color: "bg-blue-400/10 text-blue-500",
-              },
-              {
-                label: "RISING SIGN",
-                value: "Your outward personality and first impressions",
-                icon: "🌅",
-                color: "bg-green-400/10 text-green-500",
-              },
-            ],
-          },
-          {
-            title: "How You Express And Act",
-            subtitle: "How you think, love, and take action.",
-            items: [
-              {
-                label: "MERCURY",
-                value: "Your thinking & communication",
-                icon: "☿",
-                color: "bg-purple-400/10 text-purple-500",
-              },
-              {
-                label: "VENUS",
-                value: "Your love & values",
-                icon: "♀",
-                color: "bg-rose-400/10 text-rose-500",
-              },
-              {
-                label: "MARS",
-                value: "Your drive and ambition",
-                icon: "♂",
-                color: "bg-orange-400/10 text-orange-500",
-              },
-            ],
-          },
-        ].map((section, idx) => (
-          <div key={idx} className="space-y-4">
-            <div className="space-y-1">
+        {/* Key Sections Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-card rounded-[32px] p-8 border border-border shadow-sm space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                <Navigation className="w-5 h-5 text-blue-500" />
+              </div>
               <h3 className="text-xl font-black text-foreground">
-                {section.title}
+                {t("natal.planet")}
               </h3>
-              <p className="text-muted-foreground font-medium text-sm">
-                {section.subtitle}
-              </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {section.items.map((item, i) => (
+            <div className="space-y-4">
+              {[
+                { label: "Sun", sign: "Leo", house: "10th" },
+                { label: "Moon", sign: "Scorpio", house: "1st" },
+                { label: "Rising", sign: "Libra", house: "1st" },
+              ].map((p) => (
                 <div
-                  key={i}
-                  className="p-6 bg-card border border-border rounded-3xl hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer"
+                  key={p.label}
+                  className="flex justify-between items-center border-b border-border/50 pb-3 last:border-0 last:pb-0"
                 >
-                  <div className="flex flex-col gap-4">
-                    <div
-                      className={`w-12 h-12 ${item.color} rounded-2xl flex items-center justify-center text-2xl font-bold`}
-                    >
-                      {item.icon}
-                    </div>
-                    <div className="space-y-1">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
-                        {item.label}
-                      </h4>
-                      <p className="text-foreground font-bold leading-tight group-hover:text-primary transition-colors">
-                        {item.value}
-                      </p>
-                    </div>
-                  </div>
+                  <span className="font-bold text-muted-foreground">
+                    {p.label}
+                  </span>
+                  <span className="font-black text-foreground">
+                    {p.sign} · {p.house}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
-        ))}
 
-        {/* Locked Sections */}
-        <div className="relative group overflow-hidden bg-muted/50 dark:bg-primary/10 rounded-[40px] p-12 text-center text-foreground border border-border dark:border-primary/20 shadow-lg">
+          <div className="bg-card rounded-[32px] p-8 border border-border shadow-sm space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center">
+                <Activity className="w-5 h-5 text-purple-500" />
+              </div>
+              <h3 className="text-xl font-black text-foreground">
+                {t("natal.aspect")}
+              </h3>
+            </div>
+            <div className="space-y-4">
+              {[
+                { label: "Mercury Trine Jupiter", type: "Harmony" },
+                { label: "Venus Square Saturn", type: "Challenge" },
+                { label: "Mars Sextile Pluto", type: "Power" },
+              ].map((a) => (
+                <div
+                  key={a.label}
+                  className="flex justify-between items-center border-b border-border/50 pb-3 last:border-0 last:pb-0"
+                >
+                  <span className="font-bold text-muted-foreground">
+                    {a.label}
+                  </span>
+                  <span className="text-[10px] font-black uppercase px-2 py-1 bg-muted rounded-md text-muted-foreground">
+                    {a.type}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Detailed Insights Section */}
+        <div className="space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="h-1 w-12 bg-primary rounded-full" />
+            <h2 className="text-2xl font-black text-foreground uppercase tracking-widest">
+              {t("insights.reports")}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { label: "Identity", icon: User, color: "text-blue-500" },
+              { label: "Mission", icon: Zap, color: "text-yellow-500" },
+              { label: "Protection", icon: Shield, color: "text-green-500" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-card p-6 rounded-[32px] border border-border hover:border-primary/50 transition-colors group cursor-pointer"
+              >
+                <div
+                  className={`w-12 h-12 bg-muted rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+                >
+                  <item.icon className={`w-6 h-6 ${item.color}`} />
+                </div>
+                <h4 className="text-lg font-black text-foreground mb-1">
+                  {item.label}
+                </h4>
+                <p className="text-sm text-muted-foreground font-medium">
+                  Deep analysis of your cosmic {item.label.toLowerCase()}{" "}
+                  profile.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Locked Premium Insights */}
+        <div className="relative group overflow-hidden bg-muted/50 dark:bg-primary/10 rounded-[40px] p-12 text-center text-foreground border border-border dark:border-primary/20 shadow-lg mt-12">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none" />
           <div className="relative z-10 space-y-6">
-            <div className="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-card rounded-2xl shadow-xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform">
               <Lock className="w-8 h-8 text-primary" />
             </div>
             <h3 className="text-3xl font-black italic">
-              Decode Your Full Cosmic Path
+              {t("natal.premiumTitle")}
             </h3>
-            <p className="text-muted-foreground text-lg max-w-lg mx-auto">
-              Advanced patterns, life purpose nodes, and future transits are
-              available in your premium blueprint.
+            <p className="text-muted-foreground text-lg max-w-lg mx-auto font-medium">
+              {t("natal.premiumDesc")}
             </p>
             <Button
               onClick={() => setIsPaymentModalOpen(true)}
-              className="h-16 px-12 rounded-2xl bg-primary text-primary-foreground font-black text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20"
+              className="h-16 px-12 rounded-[24px] bg-primary text-primary-foreground font-black text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 active:scale-95"
             >
-              Unlock Premium Insights
+              {t("natal.unlockBtn")}
             </Button>
           </div>
         </div>

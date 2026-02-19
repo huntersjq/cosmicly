@@ -15,6 +15,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useI18n } from "@/components/i18n-provider";
 
 interface PaymentModalProps {
   isOpen: boolean;
@@ -27,10 +28,11 @@ interface PaymentModalProps {
 export function PaymentModal({
   isOpen,
   onClose,
-  title = "Sketch in 30 minutes",
+  title,
   price = "S$5.99",
   originalPrice = "S$11.99",
 }: PaymentModalProps) {
+  const { t } = useI18n();
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
@@ -39,7 +41,7 @@ export function PaymentModal({
       >
         <DialogHeader className="p-6 bg-card border-b border-border flex-row items-center justify-between space-y-0 relative">
           <DialogTitle className="text-xl font-black text-foreground mx-auto">
-            {title}
+            {title || t("payment.title")}
           </DialogTitle>
           <button
             onClick={onClose}
@@ -60,7 +62,7 @@ export function PaymentModal({
               </span>
             </div>
             <div className="bg-green-500/10 text-green-500 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
-              You save 50%
+              {t("payment.save", { percent: 50 })}
             </div>
           </div>
 
@@ -78,7 +80,7 @@ export function PaymentModal({
                 <Clock className="w-4 h-4 text-primary" />
               </div>
               <p className="text-muted-foreground font-bold text-sm text-left">
-                Delivered in 30 minutes
+                {t("payment.delivered", { time: "30 minutes" })}
               </p>
             </div>
           </div>

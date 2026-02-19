@@ -5,13 +5,21 @@ import { User, Briefcase, Heart, MessageSquare, Star } from "lucide-react";
 import { ReadingCard } from "./ReadingCard";
 import { HOROSCOPE_DATA } from "@/lib/mock-data";
 import { Button } from "@/components/ui/button";
+import { useI18n } from "@/components/i18n-provider";
 
 export function HoroscopeDashboard() {
+  const { t } = useI18n();
   const [activeTab, setActiveTab] = useState<"today" | "tomorrow" | "month">(
     "today",
   );
 
   const data = HOROSCOPE_DATA[activeTab];
+
+  const tabs = [
+    { key: "today", label: t("horoscope.daily") },
+    { key: "tomorrow", label: t("horoscope.tomorrow") },
+    { key: "month", label: t("horoscope.monthly") },
+  ] as const;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
@@ -19,17 +27,17 @@ export function HoroscopeDashboard() {
       <div className="space-y-8">
         {/* Date Tabs */}
         <div className="bg-muted p-1.5 rounded-full flex w-full max-w-2xl border border-border">
-          {(["today", "tomorrow", "month"] as const).map((tab) => (
+          {tabs.map((tab) => (
             <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
               className={`flex-1 py-3 px-6 rounded-full text-base font-semibold transition-all ${
-                activeTab === tab
+                activeTab === tab.key
                   ? "bg-primary text-primary-foreground shadow-md"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab.label}
             </button>
           ))}
         </div>
@@ -37,19 +45,19 @@ export function HoroscopeDashboard() {
         {/* Readings */}
         <div className="space-y-6">
           <ReadingCard
-            title="Personal Life"
+            title={t("horoscope.personal")}
             content={data.personal}
             icon={User}
             iconColor="text-blue-500"
           />
           <ReadingCard
-            title="Profession"
+            title={t("horoscope.profession")}
             content={data.profession}
             icon={Briefcase}
             iconColor="text-cyan-500"
           />
           <ReadingCard
-            title="Health"
+            title={t("horoscope.health")}
             content={data.health}
             icon={Heart}
             iconColor="text-rose-500"
@@ -70,15 +78,13 @@ export function HoroscopeDashboard() {
           </div>
           <div className="space-y-2">
             <h3 className="text-2xl font-bold text-foreground">
-              Chat with Astrologer
+              {t("horoscope.chatTitle")}
             </h3>
-            <p className="text-muted-foreground">
-              Get insights into your compatibility with your personal Astrologer
-            </p>
+            <p className="text-muted-foreground">{t("horoscope.chatDesc")}</p>
           </div>
           <Button className="w-full h-14 rounded-xl bg-primary text-primary-foreground font-bold text-lg hover:bg-primary/90 transition-all">
             <MessageSquare className="w-5 h-5 mr-3" />
-            Astrologers
+            {t("horoscope.astrologers")}
           </Button>
         </div>
 
@@ -86,15 +92,12 @@ export function HoroscopeDashboard() {
         <div className="bg-card p-8 rounded-[24px] shadow-sm border border-border flex flex-col gap-6 overflow-hidden relative">
           <div className="space-y-2 relative z-10">
             <h3 className="text-2xl font-bold text-foreground">
-              Test your compatibility in love
+              {t("horoscope.compatTitle")}
             </h3>
-            <p className="text-muted-foreground">
-              Get insights on your relationships with friends, partners, and
-              crushes.
-            </p>
+            <p className="text-muted-foreground">{t("horoscope.compatDesc")}</p>
           </div>
           <Button className="w-full h-14 rounded-xl bg-primary text-primary-foreground font-bold text-lg hover:bg-primary/90 transition-all relative z-10">
-            Start Test
+            {t("horoscope.startTest")}
           </Button>
           <div className="absolute -bottom-4 -right-4 w-32 h-32 opacity-10">
             <Heart className="w-full h-full text-rose-500" />

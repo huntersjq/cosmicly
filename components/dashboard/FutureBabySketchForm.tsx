@@ -12,12 +12,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useI18n } from "@/components/i18n-provider";
 
 interface FutureBabySketchFormProps {
   onBack: () => void;
 }
 
 export function FutureBabySketchForm({ onBack }: FutureBabySketchFormProps) {
+  const { t } = useI18n();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
@@ -35,15 +37,14 @@ export function FutureBabySketchForm({ onBack }: FutureBabySketchFormProps) {
           <Baby className="w-12 h-12 text-primary animate-bounce" />
         </div>
         <h1 className="text-4xl font-black text-foreground tracking-tight italic">
-          Your Baby's Sketch is being prepared!
+          {t("sketches.drawing", { type: "Baby" })}
         </h1>
         <p className="text-muted-foreground text-lg max-w-md mx-auto">
-          Our specialized artists are analyzing your genetic potential and
-          cosmic alignment. You will receive an email once the sketch is ready.
+          {t("sketches.drawingDesc")}
         </p>
         <div className="bg-card p-8 rounded-[40px] border border-border shadow-sm inline-block">
           <p className="text-muted-foreground font-bold uppercase tracking-widest text-xs mb-2">
-            Estimated Arrival
+            {t("sketches.completion")}
           </p>
           <p className="text-3xl font-black text-foreground">12 - 24 Hours</p>
         </div>
@@ -53,7 +54,7 @@ export function FutureBabySketchForm({ onBack }: FutureBabySketchFormProps) {
             <Sparkles className="w-20 h-20 text-foreground dark:text-primary" />
           </div>
           <h3 className="text-2xl font-black italic">
-            Want to know your baby's name & life path?
+            {t("sketches.unlockTitle")}
           </h3>
           <p className="text-muted-foreground font-medium">
             Unlock the complete identity package including predicted names,
@@ -63,7 +64,7 @@ export function FutureBabySketchForm({ onBack }: FutureBabySketchFormProps) {
             onClick={() => setIsPaymentModalOpen(true)}
             className="w-full h-16 rounded-2xl bg-primary text-primary-foreground font-black text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20"
           >
-            Unlock Full Identity Profile
+            {t("sketches.unlockBtn")}
           </Button>
         </div>
         <div className="pt-8">
@@ -72,7 +73,7 @@ export function FutureBabySketchForm({ onBack }: FutureBabySketchFormProps) {
             variant="outline"
             className="h-14 px-12 rounded-2xl font-bold"
           >
-            Back to Insights
+            {t("common.back")}
           </Button>
         </div>
       </div>
@@ -86,7 +87,7 @@ export function FutureBabySketchForm({ onBack }: FutureBabySketchFormProps) {
         className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-bold group"
       >
         <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-        Back to Insights
+        {t("common.back")}
       </button>
 
       <div className="bg-card rounded-[40px] shadow-sm border border-border p-8 md:p-12 space-y-10">
@@ -95,12 +96,10 @@ export function FutureBabySketchForm({ onBack }: FutureBabySketchFormProps) {
             <Baby className="w-10 h-10 text-primary" />
           </div>
           <h1 className="text-4xl font-black tracking-tight text-foreground leading-tight">
-            You're one step away from seeing your Baby's Sketch
+            {t("sketches.babyTitle")}
           </h1>
           <p className="text-muted-foreground text-lg">
-            Please share a few details to help our artists create the most
-            accurate and heartfelt sketch inspired by your family's unique
-            traits.
+            {t("sketches.babySubtitle")}
           </p>
         </div>
 
@@ -153,7 +152,7 @@ export function FutureBabySketchForm({ onBack }: FutureBabySketchFormProps) {
             onClick={() => setIsSubmitted(true)}
             className="w-full h-20 rounded-[28px] bg-primary text-primary-foreground font-black text-2xl hover:bg-primary/90 transition-all shadow-2xl shadow-primary/30 group mt-4 overflow-hidden relative"
           >
-            Unveil My Baby's Sketch
+            {t("insights.unlock")}
           </Button>
         </div>
       </div>

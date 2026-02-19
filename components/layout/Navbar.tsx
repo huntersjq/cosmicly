@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { ThemeToggle } from "@/components/dashboard/ThemeToggle";
+import { useI18n } from "@/components/i18n-provider";
 
 export function Navbar() {
+  const { t } = useI18n();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authType, setAuthType] = useState<"login" | "signup">("login");
 
@@ -31,13 +33,13 @@ export function Navbar() {
             href="#"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Features
+            {t("nav.features")}
           </Link>
           <Link
             href="#"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            Pricing
+            {t("nav.pricing")}
           </Link>
           <ThemeToggle />
           <Button
@@ -45,14 +47,14 @@ export function Navbar() {
             className="text-sm font-semibold rounded-full px-6"
             onClick={() => openAuth("signup")}
           >
-            Sign up
+            {t("common.signup")}
           </Button>
           <Button
             variant="ghost"
             className="text-sm font-medium"
             onClick={() => openAuth("login")}
           >
-            Login
+            {t("common.login")}
           </Button>
         </div>
       </nav>

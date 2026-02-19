@@ -5,9 +5,11 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogFooter,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useI18n } from "@/components/i18n-provider";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -31,6 +33,7 @@ export function BirthDetailModal({
   onConfirm,
   title,
 }: BirthDetailModalProps) {
+  const { t } = useI18n();
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[500px] bg-card rounded-[32px] p-10 border-none shadow-2xl overflow-hidden">
@@ -87,18 +90,29 @@ export function BirthDetailModal({
 
           <div className="flex items-center justify-between p-4 bg-muted rounded-2xl border border-border">
             <span className="text-muted-foreground font-bold text-sm">
-              "I don't know my exact time"
+              I don't know my exact time
             </span>
             <Switch className="data-[state=checked]:bg-primary" />
           </div>
         </div>
 
-        <Button
-          onClick={onConfirm}
-          className="w-full h-16 rounded-2xl bg-primary text-primary-foreground font-black text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 active:scale-[0.98]"
-        >
-          Confirm Details
-        </Button>
+        <DialogFooter className="sm:justify-start gap-3 pt-4">
+          <Button
+            type="button"
+            className="h-14 flex-1 rounded-2xl bg-primary text-primary-foreground font-black text-lg hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all active:scale-95"
+            onClick={onConfirm}
+          >
+            {t("common.confirm")}
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            className="h-14 flex-1 rounded-2xl font-bold border-2"
+            onClick={onClose}
+          >
+            {t("common.cancel")}
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

@@ -9,6 +9,7 @@ import { SoulmateSketchForm } from "@/components/dashboard/SoulmateSketchForm";
 import { FutureBabySketchForm } from "@/components/dashboard/FutureBabySketchForm";
 import { INSIGHTS } from "@/lib/mock-data";
 import { Button } from "@/components/ui/button";
+import { useI18n } from "@/components/i18n-provider";
 
 type ViewState = "grid" | "natal_chart" | "soulmate_sketch" | "baby_sketch";
 
@@ -35,6 +36,8 @@ export default function InsightsPage() {
       alert(`Generating ${selectedInsight}...`);
     }
   };
+
+  const { t } = useI18n();
 
   if (view === "natal_chart") {
     return (
@@ -68,11 +71,10 @@ export default function InsightsPage() {
         <div className="flex-1 space-y-16">
           <div className="space-y-4">
             <h1 className="text-5xl font-black text-foreground tracking-tight">
-              Insights
+              {t("nav.insights")}
             </h1>
             <p className="text-muted-foreground text-xl font-medium max-w-2xl">
-              Deep cosmic reports and hand-drawn sketches tailored to your
-              unique astrological blueprint.
+              {t("insights.subtitle")}
             </p>
           </div>
 

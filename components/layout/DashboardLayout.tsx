@@ -14,26 +14,33 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-const NAV_ITEMS = [
-  { label: "Horoscope", href: "/dashboard" },
-  { label: "Chats", href: "/dashboard/chats" },
-  { label: "Courses", href: "/dashboard/courses" },
-  { label: "Insights", href: "/dashboard/insights" },
-];
-
+import { useI18n } from "@/components/i18n-provider";
 import { ThemeToggle } from "@/components/dashboard/ThemeToggle";
+import { Locale } from "@/lib/i18n";
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const { locale, setLocale, t } = useI18n();
 
   const handleLogout = () => {
     router.push("/");
+  };
+
+  const navItems = [
+    { label: t("horoscope.daily"), href: "/dashboard" },
+    { label: t("nav.chats"), href: "/dashboard/chats" },
+    { label: t("nav.courses"), href: "/dashboard/courses" },
+    { label: t("nav.insights"), href: "/dashboard/insights" },
+  ];
+
+  const languages: Record<Locale, { label: string; flag: string }> = {
+    en: { label: "English", flag: "US" },
+    zh: { label: "中文", flag: "CN" },
+    es: { label: "Español", flag: "ES" },
   };
 
   return (
@@ -47,7 +54,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             hint
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            {NAV_ITEMS.map((item) => (
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -68,11 +75,34 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
         <div className="flex items-center gap-4">
           <ThemeToggle />
-          <div className="flex items-center gap-2 bg-muted rounded-lg px-3 py-1.5 cursor-pointer hover:bg-accent transition-all">
-            <Globe className="w-4 h-4 text-muted-foreground" />
-            <span className="text-sm font-bold text-foreground">US</span>
-            <span className="text-muted-foreground">▼</span>
-          </div>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <div className="flex items-center gap-2 bg-muted rounded-lg px-3 py-1.5 cursor-pointer hover:bg-accent transition-all">
+                <Globe className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm font-bold text-foreground">
+                  {languages[locale].flag}
+                </span>
+                <span className="text-muted-foreground text-[10px]">▼</span>
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="p-2 rounded-2xl border-2 border-border bg-card animate-in fade-in zoom-in-95 duration-200">
+              {(Object.keys(languages) as Locale[]).map((lang) => (
+                <DropdownMenuItem
+                  key={lang}
+                  onClick={() => setLocale(lang)}
+                  className={`h-10 rounded-xl cursor-pointer focus:bg-accent px-3 font-bold ${
+                    locale === lang ? "text-primary" : "text-muted-foreground"
+                  }`}
+                >
+                  <span className="mr-2 opacity-50">
+                    {languages[lang].flag}
+                  </span>
+                  {languages[lang].label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -106,7 +136,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                       <UserCircle className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
                     <span className="font-bold text-muted-foreground group-hover:text-foreground">
-                      Profile
+                      {t("nav.profile")}
                     </span>
                   </Link>
                 </DropdownMenuItem>
@@ -122,19 +152,9 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                       <Settings className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
                     <span className="font-bold text-muted-foreground group-hover:text-foreground">
-                      Settings
+                      {t("nav.settings")}
                     </span>
                   </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="h-14 rounded-xl cursor-pointer focus:bg-accent group px-3">
-                  <div className="flex items-center gap-3 w-full">
-                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center group-hover:bg-card transition-colors">
-                      <HelpCircle className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </div>
-                    <span className="font-bold text-muted-foreground group-hover:text-foreground">
-                      Help Center
-                    </span>
-                  </div>
                 </DropdownMenuItem>
               </div>
               <DropdownMenuSeparator className="bg-border mx-2" />
@@ -147,7 +167,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                     <div className="w-10 h-10 rounded-xl bg-destructive/10 flex items-center justify-center group-hover:bg-destructive/20 transition-colors">
                       <LogOut className="w-6 h-6 text-destructive group-hover:text-destructive transition-colors" />
                     </div>
-                    <span className="font-bold">Log Out</span>
+                    <span className="font-bold">{t("common.logout")}</span>
                   </div>
                 </DropdownMenuItem>
               </div>
