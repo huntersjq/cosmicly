@@ -74,8 +74,7 @@ export const COURSES = [
     lessons: 12,
     duration: "2h 45m",
     rating: 4.9,
-    image:
-      "https://images.unsplash.com/photo-1568444438385-eee33664c233?auto=format&fit=crop&q=80&w=800",
+    image: "/images/courses/palmistry.png",
   },
   {
     title: "Tarot for Beginners",
@@ -83,8 +82,7 @@ export const COURSES = [
     lessons: 15,
     duration: "3h 20m",
     rating: 4.8,
-    image:
-      "https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=800",
+    image: "/images/courses/tarot.png",
   },
   {
     title: "Natal Chart Mastery",
@@ -92,8 +90,7 @@ export const COURSES = [
     lessons: 20,
     duration: "4h 10m",
     rating: 5.0,
-    image:
-      "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&q=80&w=800",
+    image: "/images/courses/natal-chart.png",
   },
 ];
 
