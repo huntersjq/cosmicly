@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌙 Cosmicly | Personalized Astrology & Cosmic Insights
 
-## Getting Started
+Cosmicly is a high-end, interactive astrology platform designed to provide users with deep insights into their astral journey. Built with a focus on premium aesthetics, smooth animations, and global reach.
 
-First, run the development server:
+## ✨ Core Features
+
+- **Daily & Monthly Horoscopes**: Personalized readings for all 12 zodiac signs.
+- **Cosmic Insights**:
+  - **Natal Chart Reports**: Comprehensive analysis of planetary positions at birth.
+  - **Soulmate & Future Baby Sketches**: Fun, interactive readings with visual components.
+  - **Compatibility Tests**: Explore relationships through astral alignment.
+- **Expert Guidance**: Connect with professional astrologers for 1-on-1 consultations.
+- **Astrology Masterclasses**: Courses to help users master the secrets of the stars.
+- **Multilingual Support**: Fully localized in English, Chinese (中文), and Spanish (Español).
+- **Theme Modes**: Beautifully crafted Light and Dark modes with glassmorphism components.
+
+## 🚀 Tech Stack
+
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **UI Components**: [Shadcn/UI](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Internationalization**: Custom React Context-based i18n system.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 20.x or higher
+- npm
+
+### Installation
+
+1.  Clone the repository:
+
+    ```bash
+    git clone https://github.com/huntersjq/cosmicly.git
+    cd cosmicly
+    ```
+
+2.  Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3.  Run the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+4.  Open [http://localhost:3000](http://localhost:3000) to view the app.
+
+## 📦 Deployment
+
+This project is configured for **Static Export** and is optimized for deployment on **GitHub Pages**.
+
+### GitHub Actions Deployment
+
+The repository includes a `.github/workflows/deploy.yml` file that automates the deployment process:
+
+1.  Push changes to the `main` branch.
+2.  GitHub Actions will automatically:
+    - Install dependencies.
+    - Build the static site (`npm run build`).
+    - Export the site to the `out/` directory.
+    - Deploy the content to GitHub Pages.
+
+### Manual Export
+
+To manually generate the static site:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The static files will be located in the `out/` folder.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📄 License
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is created for demonstration and portfolio purposes. All design inspirations from Hint.app remain the property of their respective owners.
