@@ -71,7 +71,7 @@ export function InsightCard({
       </p>
 
       <div className="mt-auto pt-4">
-        <Button className="w-full min-h-[56px] h-auto py-4 px-6 rounded-[20px] bg-primary text-primary-foreground font-black text-lg hover:bg-primary/90 transition-all group whitespace-normal text-center leading-tight">
+        <Button className="w-full h-14 px-6 rounded-[20px] bg-primary text-primary-foreground font-black text-base hover:bg-primary/90 transition-all group truncate">
           {cta}
         </Button>
       </div>

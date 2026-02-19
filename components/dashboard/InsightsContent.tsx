@@ -138,7 +138,7 @@ export function InsightsContent() {
                 </div>
               </div>
 
-              <Button className="w-full h-16 rounded-[24px] bg-primary text-primary-foreground font-black text-xl hover:bg-primary/90 shadow-xl shadow-primary/20">
+              <Button className="w-full h-14 rounded-[20px] bg-primary text-primary-foreground font-black text-lg hover:bg-primary/90 shadow-xl shadow-primary/20">
                 Start Test
               </Button>
             </div>
