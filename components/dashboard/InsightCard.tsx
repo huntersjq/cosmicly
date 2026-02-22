@@ -47,31 +47,31 @@ export function InsightCard({
   const Icon = iconConfig.icon;
 
   return (
-    <div className="bg-card p-8 rounded-[36px] shadow-sm border border-border flex flex-col gap-6 group hover:translate-y-[-4px] transition-all duration-300 h-full">
-      <div className="flex items-start gap-4">
+    <div className="bg-card p-6 rounded-2xl shadow-sm border border-border flex flex-col gap-4 group hover:border-primary/30 transition-all duration-300">
+      <div className="flex items-center gap-3">
         <div
-          className={`w-14 h-14 rounded-2xl ${iconConfig.bg} dark:bg-zinc-800/50 flex items-center justify-center ${iconConfig.color} flex-shrink-0 group-hover:scale-110 transition-transform`}
+          className={`w-10 h-10 rounded-full ${iconConfig.bg} dark:bg-zinc-800/80 flex items-center justify-center ${iconConfig.color} flex-shrink-0`}
         >
-          <Icon className="w-8 h-8" />
+          <Icon className="w-5 h-5" />
         </div>
-        <div className="space-y-1">
-          <h3 className="text-2xl font-black text-foreground leading-tight">
+        <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+          <h3 className="text-xl font-bold text-foreground leading-tight">
             {title}
           </h3>
           {price && (
-            <p className="text-muted-foreground font-bold text-sm">
+            <span className="text-muted-foreground font-semibold text-sm">
               Price: {price}
-            </p>
+            </span>
           )}
         </div>
       </div>
 
-      <p className="text-muted-foreground leading-relaxed text-lg font-medium">
+      <p className="text-muted-foreground leading-relaxed text-[15px] font-medium max-w-4xl">
         {description}
       </p>
 
-      <div className="mt-auto pt-4">
-        <Button className="w-full h-14 px-6 rounded-[20px] bg-primary text-primary-foreground font-black text-base hover:bg-primary/90 transition-all group truncate">
+      <div className="mt-2">
+        <Button className="h-11 px-8 rounded-lg bg-primary text-primary-foreground font-bold text-[15px] hover:bg-primary/90 transition-all w-full sm:w-auto">
           {cta}
         </Button>
       </div>

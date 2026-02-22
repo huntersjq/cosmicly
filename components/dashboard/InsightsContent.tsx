@@ -67,81 +67,46 @@ export function InsightsContent() {
 
   return (
     <DashboardLayout>
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 pb-20">
-        <div className="flex-1 space-y-16">
-          <div className="space-y-4">
-            <h1 className="text-5xl font-black text-foreground tracking-tight">
-              {t("nav.insights")}
-            </h1>
-            <p className="text-muted-foreground text-xl font-medium max-w-2xl">
-              {t("insights.subtitle")}
-            </p>
-          </div>
-
-          <div className="space-y-20">
-            {categories.map((category) => (
-              <div key={category} className="space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="h-1 w-12 bg-primary rounded-full" />
-                  <h2 className="text-2xl font-black text-foreground uppercase tracking-widest">
-                    {category}
-                  </h2>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {INSIGHTS.filter((i) => i.category === category).map(
-                    (insight) => (
-                      <div
-                        key={insight.title}
-                        onClick={() => handleCardClick(insight.title)}
-                        className="cursor-pointer"
-                      >
-                        <InsightCard {...insight} />
-                      </div>
-                    ),
-                  )}
-                </div>
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 pb-20 pt-8">
+        <div className="flex-1">
+          <div className="flex flex-col gap-4">
+            {INSIGHTS.map((insight) => (
+              <div
+                key={insight.title}
+                onClick={() => handleCardClick(insight.title)}
+                className="cursor-pointer"
+              >
+                <InsightCard {...insight} />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Sidebar / Top Right Section on Mobile */}
-        <aside className="lg:w-[400px] flex-shrink-0">
-          <div className="sticky top-24 bg-card p-10 rounded-[40px] border-4 border-border shadow-2xl space-y-8 overflow-hidden relative">
-            {/* Decorative character illustration placeholder */}
-            <div className="absolute -right-10 -top-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
-
-            <div className="relative space-y-6">
-              <div className="space-y-4">
-                <h3 className="text-3xl font-black text-foreground leading-tight">
-                  Test your compatibility in love
+        {/* Sidebar */}
+        <aside className="lg:w-[320px] xl:w-[380px] flex-shrink-0">
+          <div className="sticky top-24 bg-card p-8 rounded-2xl border border-border shadow-sm space-y-6">
+            <div className="flex justify-between items-start gap-4">
+              <div className="space-y-3">
+                <h3 className="text-xl font-bold text-foreground leading-tight">
+                  Test your
+                  <br className="hidden xl:block" /> compatibility in love
                 </h3>
-                <p className="text-muted-foreground text-lg font-medium leading-relaxed">
+                <p className="text-muted-foreground text-sm font-medium leading-relaxed">
                   Get insights on your relationships with friends, partners, and
                   crushes. Uncover needs and enhance bonds.
                 </p>
               </div>
-
-              <div className="relative h-48 bg-muted rounded-[32px] overflow-hidden flex items-center justify-center p-6 border-2 border-dashed border-border group cursor-pointer hover:border-primary transition-colors">
-                <img
-                  src="https://images.unsplash.com/photo-1516589174184-c685266e4873?w=800&q=80"
-                  alt="Compatibility"
-                  className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-                />
-                <div className="relative z-10 text-center space-y-2">
-                  <div className="w-16 h-16 bg-card rounded-2xl shadow-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                    <span className="text-4xl">🌙</span>
-                  </div>
-                  <p className="font-black text-foreground group-hover:text-white transition-colors duration-500">
-                    Interactive Test
-                  </p>
-                </div>
+              <div className="w-20 h-20 shrink-0 relative flex items-center justify-center bg-muted/50 rounded-full">
+                {/* Moon emoji as a placeholder for the illustration */}
+                <span className="text-4xl relative z-10 hover:scale-110 transition-transform cursor-default">
+                  🌙
+                </span>
               </div>
-
-              <Button className="w-full h-14 rounded-[20px] bg-primary text-primary-foreground font-black text-lg hover:bg-primary/90 shadow-xl shadow-primary/20">
-                Start Test
-              </Button>
             </div>
+
+            <Button className="w-full h-11 rounded-lg bg-primary text-primary-foreground font-bold text-[15px] hover:bg-primary/90 transition-all">
+              Start Test
+            </Button>
           </div>
         </aside>
       </div>
