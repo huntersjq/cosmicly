@@ -1,7 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { User, Briefcase, Heart, MessageSquare, Star } from "lucide-react";
+import {
+  User,
+  Briefcase,
+  Heart,
+  MessageSquare,
+  Star,
+  Smile,
+  Plane,
+  Clover,
+} from "lucide-react";
 import { ReadingCard } from "./ReadingCard";
 import { HOROSCOPE_DATA } from "@/lib/mock-data";
 import { Button } from "@/components/ui/button";
@@ -61,6 +70,24 @@ export function HoroscopeDashboard() {
             content={data.health}
             icon={Heart}
             iconColor="text-rose-500"
+          />
+          <ReadingCard
+            title={t("horoscope.emotions")}
+            content={data.emotions}
+            icon={Smile}
+            iconColor="text-purple-500"
+          />
+          <ReadingCard
+            title={t("horoscope.travel")}
+            content={data.travel}
+            icon={Plane}
+            iconColor="text-blue-400"
+          />
+          <ReadingCard
+            title={t("horoscope.luck")}
+            content={data.luck}
+            icon={Clover}
+            iconColor="text-emerald-500"
           />
         </div>
       </div>

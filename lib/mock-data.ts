@@ -6,6 +6,11 @@ export const HOROSCOPE_DATA = {
       "Aquarius benefits as Moon in Pisces sextiles Uranus in Taurus, bringing smart adjustments at work. New approaches save time. You balance creativity with practicality well.",
     health:
       "Energy feels steady when routines stay simple. Eat nourishing meals and drink water regularly. Light movement improves circulation and focus. Avoid skipping breaks.",
+    emotions:
+      "Thoughts settle once you stop rushing answers today. Calm reactions replace distance. Patience feels easier. Let silence work. You end the day feeling clear, steady, and confident without second guessing yourself or others during shared moments tonight at home now.",
+    travel:
+      "Movement feels smoother when plans stay simple today. Short trips suit your mood. Leave early and avoid tight schedules. Familiar routes reduce stress. Staying relaxed helps you handle changes and return feeling satisfied and organized by evening with ease now.",
+    luck: "Timing works quietly in your favor today. Helpful advice appears naturally. Practical choices protect results. Avoid forcing outcomes. Consistent effort attracts support. Trust small signals, since patience strengthens gains and keeps progress steady without unnecessary risks or pressure from others.",
   },
   tomorrow: {
     personal:
@@ -14,6 +19,11 @@ export const HOROSCOPE_DATA = {
       "Focus on long-term goals rather than immediate rewards. A collaborative project shows great promise if you maintain clear communication.",
     health:
       "Prioritize sleep tonight. Your body needs rest to recover from a busy week. Consider a relaxing bath or light reading before bed.",
+    emotions:
+      "Positive shifts in your outlook boost your confidence and resilience tomorrow.",
+    travel:
+      "Unexpected delays might occur, but they will lead to interesting detours.",
+    luck: "Keep an open mind; a seemingly small opportunity could turn into a major source of luck.",
   },
   month: {
     personal:
@@ -22,6 +32,11 @@ export const HOROSCOPE_DATA = {
       "Expansion and growth are the themes for the month. Your leadership qualities shine, and you may be considered for a new responsibility.",
     health:
       "A balanced diet and consistent exercise routine will yield significant benefits. Watch out for minor stress-related symptoms.",
+    emotions:
+      "You'll likely experience a period of introspection and deeper emotional connection with those around you.",
+    travel:
+      "Long-distance travel or exploring new cultures brings fresh perspectives and inspiring ideas.",
+    luck: "Good fortune aligns with your professional aspirations. Networking opens unexpected doors.",
   },
 };
 
