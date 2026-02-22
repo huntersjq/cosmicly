@@ -10,6 +10,7 @@ import {
   Calendar,
   Globe,
   Lock,
+  Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PaymentModal } from "./PaymentModal";
@@ -32,219 +33,245 @@ export function SoulmateSketchForm({ onBack }: SoulmateSketchFormProps) {
   const [step, setStep] = useState<"quiz" | "drawing">("quiz");
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
-  if (step === "drawing") {
-    return (
-      <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in zoom-in-95 duration-700 pb-20">
-        <PaymentModal
-          isOpen={isPaymentModalOpen}
-          onClose={() => setIsPaymentModalOpen(false)}
-        />
-        <div className="text-center space-y-6">
-          <div className="relative w-48 h-48 mx-auto">
-            <div className="absolute inset-0 border-8 border-primary/10 rounded-full animate-spin border-t-primary" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Heart className="w-16 h-16 text-primary animate-pulse" />
-            </div>
-          </div>
-          <h1 className="text-4xl font-black text-foreground tracking-tight italic">
-            {t("sketches.drawing", { type: "Soulmate" })}
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-md mx-auto">
-            {t("sketches.drawingDesc")}
-          </p>
-          <div className="pt-4">
-            <Button
-              onClick={() => setIsPaymentModalOpen(true)}
-              className="h-20 px-12 rounded-[28px] bg-primary text-primary-foreground font-black text-2xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 active:scale-95"
-            >
-              {t("sketches.speedUp")}
-            </Button>
-          </div>
-        </div>
-
-        {/* Status Dashboard */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            {
-              label: t("sketches.status"),
-              value: t("sketches.inProgress"),
-              icon: <Sparkles className="text-blue-500" />,
-            },
-            {
-              label: t("sketches.completion"),
-              value: t("sketches.timeLeft", { time: "23h 59m" }),
-              icon: <Calendar className="text-purple-500" />,
-            },
-            {
-              label: t("sketches.artist"),
-              value: t("sketches.master"),
-              icon: <User className="text-rose-500" />,
-            },
-            {
-              label: t("sketches.method"),
-              value: t("sketches.aura"),
-              icon: <Globe className="text-green-500" />,
-            },
-          ].map((stat, i) => (
-            <div
-              key={i}
-              className="bg-card p-6 rounded-3xl border border-border shadow-sm flex items-center gap-4"
-            >
-              <div className="w-12 h-12 bg-muted rounded-2xl flex items-center justify-center text-xl">
-                {stat.icon}
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase text-muted-foreground tracking-widest">
-                  {stat.label}
-                </p>
-                <p className="text-xl font-black text-foreground">
-                  {stat.value}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Locked Premium Insights */}
-        <div className="space-y-6 pt-12">
-          <h2 className="text-2xl font-black text-foreground">
-            {t("sketches.unlockTitle")}
-          </h2>
-          <div className="grid grid-cols-1 gap-4">
-            {[
-              {
-                title: "First & Last Initials",
-                price: "$9.99",
-                desc: "Know the specific names that will change your life.",
-              },
-              {
-                title: "Occupation & Wealth",
-                price: "$12.99",
-                desc: "Discover how they spend their days and their career path.",
-              },
-              {
-                title: "Zodiac Match Percentage",
-                price: "$7.99",
-                desc: "See your deep compatibility and fatal attraction score.",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-muted/50 dark:bg-primary/10 text-foreground p-8 rounded-[32px] flex flex-col md:flex-row items-center justify-between gap-6 group hover:scale-[1.02] transition-transform cursor-pointer overflow-hidden relative border border-border dark:border-primary/20 shadow-lg"
-              >
-                <div className="absolute top-0 right-0 p-4 opacity-10 dark:opacity-20">
-                  <Lock className="w-24 h-24 text-foreground dark:text-primary" />
-                </div>
-                <div className="space-y-2 relative z-10 text-center md:text-left">
-                  <h3 className="text-2xl font-black italic">{item.title}</h3>
-                  <p className="text-muted-foreground max-w-sm">{item.desc}</p>
-                </div>
-                <Button
-                  onClick={() => setIsPaymentModalOpen(true)}
-                  className="h-14 px-8 rounded-2xl bg-primary text-primary-foreground font-black text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 relative z-10 w-full md:w-auto"
-                >
-                  {t("insights.unlock")}
-                </Button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="max-w-2xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
+    <div className="max-w-7xl mx-auto space-y-6 pt-8 pb-20 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <PaymentModal
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        title={t("payment.title")}
+      />
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-bold group"
+        className="flex items-center gap-2 text-foreground font-black text-lg transition-colors group mb-4 w-fit hover:opacity-80"
       >
-        <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-        {t("common.back")}
+        <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+        Back to Insights
       </button>
 
-      <div className="bg-card rounded-[40px] shadow-sm border border-border p-8 md:p-12 space-y-10">
-        <div className="text-center space-y-4">
-          <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-4">
-            <Heart className="w-10 h-10 text-primary" />
+      <div className="flex flex-col lg:flex-row gap-8 items-start">
+        {/* Main Content */}
+        <div className="flex-1 space-y-6">
+          <div className="bg-card p-6 rounded-[24px] border border-border shadow-sm flex flex-col md:flex-row gap-8">
+            <div className="w-full md:w-1/2 aspect-square rounded-xl overflow-hidden bg-muted relative shrink-0">
+              {/* Sketch Image Simulation */}
+              <img
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop"
+                alt="Soulmate Sketch"
+                className="w-full h-full object-cover grayscale opacity-90 mix-blend-multiply"
+              />
+            </div>
+            <div className="w-full md:w-1/2 flex flex-col justify-between py-2">
+              <div className="space-y-4">
+                <h1 className="text-2xl font-bold text-foreground">
+                  Welcome to Your Soulmate Story, Justin
+                </h1>
+                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                  Inside, you'll discover a beautifully crafted sketch of your
+                  soulmate, along with a captivating story of where and how
+                  you'll meet.
+                </p>
+                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                  This exciting journey into your romantic future is closely
+                  tied to your personal astrology. Your Star Sign reveals your
+                  outward personality and charisma, while your Venus Sign
+                  uncovers your deepest desires in love, hidden talents, and the
+                  key to finding your perfect match.
+                </p>
+                <p className="text-muted-foreground text-[15px] leading-relaxed">
+                  Get ready to uncover the magical details of your soulmate
+                  connection and the love story that awaits.
+                </p>
+              </div>
+              <div className="mt-8 flex flex-col gap-2">
+                <Button className="w-full h-12 rounded-lg bg-primary text-primary-foreground font-bold text-[15px] hover:bg-primary/90 transition-all">
+                  Rate your sketch
+                </Button>
+                <div className="text-right">
+                  <span className="text-xs text-primary cursor-pointer hover:underline">
+                    Report a problem
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl font-black tracking-tight text-foreground">
-            {t("sketches.soulmateTitle")}
-          </h1>
-          <p className="text-muted-foreground text-lg">
-            {t("sketches.soulmateSubtitle")}
-          </p>
+
+          {/* Locked Premium Previews */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-bold text-foreground px-2">
+              What's Inside Your Full Report
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                {
+                  title: "Physical Traits",
+                  desc: "Eye color, height, and distinct features.",
+                  icon: User,
+                  color: "text-blue-500",
+                  bg: "bg-blue-500/10",
+                },
+                {
+                  title: "Personality",
+                  desc: "Their temperament, quirks, and communication style.",
+                  icon: Sparkles,
+                  color: "text-purple-500",
+                  bg: "bg-purple-500/10",
+                },
+                {
+                  title: "Meeting Place",
+                  desc: "Where and when your paths will finally cross.",
+                  icon: Calendar,
+                  color: "text-green-500",
+                  bg: "bg-green-500/10",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-card p-6 rounded-[24px] border border-border shadow-sm relative overflow-hidden group cursor-pointer"
+                  onClick={() => setIsPaymentModalOpen(true)}
+                >
+                  <div className="absolute inset-0 bg-background/60 backdrop-blur-sm z-10 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Lock className="w-6 h-6 text-foreground mb-2" />
+                    <span className="text-sm font-bold">Unlock</span>
+                  </div>
+                  <div
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${item.bg}`}
+                  >
+                    <item.icon className={`w-5 h-5 ${item.color}`} />
+                  </div>
+                  <h4 className="font-bold text-foreground text-[15px] mb-1">
+                    {item.title}
+                  </h4>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Testimonials */}
+          <div className="bg-card p-8 rounded-[24px] border border-border shadow-sm space-y-6">
+            <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+              <Heart className="w-5 h-5 text-rose-500 fill-rose-500" /> Success
+              Stories
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                {
+                  name: "Sarah J.",
+                  text: "I was skeptical at first, but the sketch looked exactly like the man I met at a coffee shop three weeks later! It's spooky how accurate the personality description was.",
+                },
+                {
+                  name: "Michael T.",
+                  text: "The details about her career and where we would meet were spot on. We celebrated our one year anniversary yesterday. Worth every penny.",
+                },
+              ].map((testimonial, i) => (
+                <div
+                  key={i}
+                  className="bg-muted/30 p-4 rounded-xl space-y-2 border border-border/50"
+                >
+                  <div className="flex text-yellow-500 pb-1">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="w-3 h-3 fill-yellow-500" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground italic leading-relaxed">
+                    "{testimonial.text}"
+                  </p>
+                  <p className="text-[13px] font-bold text-foreground">
+                    — {testimonial.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-card p-8 rounded-[24px] border border-border shadow-sm flex flex-col space-y-6 relative overflow-hidden">
+            <div className="flex justify-between items-start gap-4 flex-wrap">
+              <h2 className="text-xl font-bold text-foreground">
+                Final Offer: Unlock the Full Soulmate Report for{" "}
+                <span className="text-purple-500">Only S$5.99</span>
+              </h2>
+              <div className="px-3 py-1 bg-green-500/10 text-green-500 text-sm font-bold rounded-md whitespace-nowrap">
+                Exclusive Offer: 05:09:42
+              </div>
+            </div>
+
+            <p className="text-muted-foreground text-[15px] leading-relaxed">
+              You've seen the sketch — now it's time to reveal everything. Get
+              your soulmate's{" "}
+              <span className="font-bold text-foreground">
+                initials, zodiac sign, personality, spiritual energy, career
+                path
+              </span>{" "}
+              and{" "}
+              <span className="font-bold text-foreground">
+                the moment you'll meet
+              </span>{" "}
+              — all in one complete bundle.
+            </p>
+            <p className="text-muted-foreground text-[15px] leading-relaxed">
+              Normally <span className="font-bold line-through">S$18.95</span>.
+              This{" "}
+              <span className="font-bold text-foreground">one-time offer</span>{" "}
+              is available for the next 24 hours only.
+            </p>
+            <p className="text-muted-foreground text-[15px] leading-relaxed">
+              Don't miss your chance to complete your story.
+            </p>
+
+            <div className="flex items-center gap-4 flex-wrap pt-2">
+              <Button
+                onClick={() => setIsPaymentModalOpen(true)}
+                className="h-12 px-8 rounded-lg bg-primary text-primary-foreground font-bold text-[15px] hover:bg-primary/90 transition-all"
+              >
+                Unlock Full Soulmate Report
+              </Button>
+              <span className="text-sm font-semibold text-muted-foreground">
+                Price: <span className="text-purple-500">S$5.99</span>{" "}
+                <span className="line-through opacity-50">S$18.95</span>
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="space-y-8">
-          <div className="space-y-3">
-            <Label className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
-              Soulmate's Gender
-            </Label>
-            <Select>
-              <SelectTrigger className="h-16 rounded-2xl border-2 border-border bg-muted/50 px-6 text-xl font-bold text-foreground">
-                <SelectValue placeholder="Select gender" />
-              </SelectTrigger>
-              <SelectContent className="rounded-2xl border-border shadow-xl">
-                <SelectItem value="female">Female</SelectItem>
-                <SelectItem value="male">Male</SelectItem>
-                <SelectItem value="non-binary">Non-binary</SelectItem>
-                <SelectItem value="no-preference">No preference</SelectItem>
-              </SelectContent>
-            </Select>
+        {/* Sidebar */}
+        <aside className="lg:w-[320px] xl:w-[380px] flex-shrink-0 space-y-6">
+          <div className="bg-card p-6 rounded-2xl border border-border shadow-sm space-y-4">
+            <div className="flex justify-between items-start gap-4">
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold text-foreground leading-tight">
+                  Chat with Astrologer
+                </h3>
+                <p className="text-muted-foreground text-[15px] leading-relaxed pr-2">
+                  Get insights into your compatibility with your personal
+                  Astrologer
+                </p>
+              </div>
+              <div className="w-20 h-20 shrink-0 opacity-50 dark:opacity-20 pointer-events-none -mt-2 -mr-2">
+                {/* Simplified astrologer decoration icon */}
+                <Globe className="w-full h-full text-primary" />
+              </div>
+            </div>
+            <Button className="w-full h-11 rounded-lg bg-primary text-primary-foreground font-bold text-[15px] hover:bg-primary/90 transition-all flex gap-2">
+              <User className="w-4 h-4" /> Astrologers
+            </Button>
           </div>
 
-          <div className="space-y-3">
-            <Label className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
-              Ethnic Preference (Optional)
-            </Label>
-            <Select>
-              <SelectTrigger className="h-16 rounded-2xl border-2 border-border bg-muted/50 px-6 text-xl font-bold text-foreground">
-                <SelectValue placeholder="No preference" />
-              </SelectTrigger>
-              <SelectContent className="rounded-2xl border-border shadow-xl">
-                <SelectItem value="no-preference">No preference</SelectItem>
-                <SelectItem value="asian">Asian</SelectItem>
-                <SelectItem value="black">Black / African</SelectItem>
-                <SelectItem value="white">White / Caucasian</SelectItem>
-                <SelectItem value="latino">Latino / Hispanic</SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="bg-card p-6 rounded-2xl border border-border shadow-sm space-y-4">
+            <h3 className="text-xl font-bold text-foreground">
+              Invite Your Friend!
+            </h3>
+            <p className="text-muted-foreground text-[15px] leading-relaxed">
+              Curious about your friend's Soulmate? Share this link with a
+              friend and compare your drawings!
+            </p>
+            <Button className="w-full h-11 rounded-lg bg-primary text-primary-foreground font-bold text-[15px] hover:bg-primary/90 transition-all mt-4">
+              Copy Link
+            </Button>
           </div>
-
-          <div className="space-y-3">
-            <Label className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">
-              Relationship Status
-            </Label>
-            <Select>
-              <SelectTrigger className="h-16 rounded-2xl border-2 border-border bg-muted/50 px-6 text-xl font-bold text-foreground">
-                <SelectValue placeholder="Select status" />
-              </SelectTrigger>
-              <SelectContent className="rounded-2xl border-border shadow-xl">
-                <SelectItem value="single">Single</SelectItem>
-                <SelectItem value="complicated">It's complicated</SelectItem>
-                <SelectItem value="seeking">Seeking clarity</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <Button
-            onClick={() => setStep("drawing")}
-            className="w-full h-20 rounded-[28px] bg-primary text-primary-foreground font-black text-2xl hover:bg-primary/90 transition-all shadow-2xl shadow-primary/30 group mt-4 overflow-hidden relative"
-          >
-            <span className="relative z-10 flex items-center justify-center gap-3">
-              {t("insights.unlock")}{" "}
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-          </Button>
-        </div>
-      </div>
-
-      <div className="text-center p-8">
-        <p className="text-muted-foreground font-bold flex items-center justify-center gap-2">
-          <Sparkles className="w-4 h-4" /> {t("common.trusted")}
-        </p>
+        </aside>
       </div>
     </div>
   );
